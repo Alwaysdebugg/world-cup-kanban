@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>世界杯赛事看板 · World Cup Matchday Board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0a0f1e;
+    --panel:#121a30;
+    --panel-2:#18233f;
+    --line:#243150;
+    --text:#eaf0ff;
+    --muted:#8a98bd;
+    --faint:#5b688c;
+    --live:#ff3b46;
+    --live-glow:rgba(255,59,70,.35);
+    --soon:#ffb020;
+    --done:#39d98a;
+    --homebar:#4f8cff;
+    --drawbar:#566184;
+    --awaybar:#ff8a3d;
+    --radius:14px;
+    --shadow:0 10px 30px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    font-family:'Inter',system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+    background:
+      radial-gradient(1200px 500px at 15% -10%, #1a2540 0, transparent 60%),
+      radial-gradient(1000px 600px at 100% 0%, #16223f 0, transparent 55%),
+      var(--ink);
+    color:var(--text);
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1280px;margin:0 auto;padding:28px 20px 64px;}
+
+  /* ---------- header ---------- */
+  header.board-head{
+    display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;
+    gap:18px;padding-bottom:22px;margin-bottom:26px;
+    border-bottom:1px solid var(--line);
+  }
+  .title-block .eyebrow{
+    font-family:'Barlow Condensed',sans-serif;
+    letter-spacing:.28em;text-transform:uppercase;
+    color:var(--soon);font-weight:600;font-size:13px;margin:0 0 4px;
+  }
+  .title-block h1{
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:700;font-size:clamp(30px,5vw,46px);
+    line-height:.98;margin:0;letter-spacing:.01em;
+  }
+  .title-block .sub{color:var(--muted);font-size:13.5px;margin-top:8px;max-width:46ch;line-height:1.5;}
+  .head-right{display:flex;flex-direction:column;align-items:flex-end;gap:12px;}
+  .updated{font-size:12.5px;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums;}
+  .updated b{color:var(--text);font-weight:600;}
+  .refresh{
+    appearance:none;border:1px solid var(--line);background:var(--panel-2);
+    color:var(--text);font-family:inherit;font-weight:600;font-size:13.5px;
+    padding:9px 16px;border-radius:10px;cursor:pointer;display:flex;align-items:center;gap:8px;
+    transition:border-color .18s ease, transform .12s ease, background .18s ease;
+  }
+  .refresh:hover{border-color:#3a4d7d;background:#1d2a4a;}
+  .refresh:active{transform:translateY(1px);}
+  .refresh:focus-visible{outline:2px solid var(--soon);outline-offset:2px;}
+  .refresh svg{width:15px;height:15px;}
+  .refresh.spin svg{animation:spin .7s ease;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+
+  /* ---------- controls ---------- */
+  .controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:24px;}
+  .search{
+    flex:1 1 240px;min-width:200px;position:relative;
+  }
+  .search input{
+    width:100%;background:var(--panel);border:1px solid var(--line);border-radius:10px;
+    color:var(--text);font-family:inherit;font-size:14px;padding:10px 12px 10px 36px;
+  }
+  .search input::placeholder{color:var(--faint);}
+  .search input:focus{outline:none;border-color:#3a4d7d;}
+  .search svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);width:15px;height:15px;color:var(--faint);}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);}
+  .legend span{display:inline-flex;align-items:center;gap:6px;}
+  .dot{width:9px;height:9px;border-radius:50%;display:inline-block;}
+  .dot.live{background:var(--live);}
+  .dot.soon{background:var(--soon);}
+  .dot.done{background:var(--done);}
+
+  /* ---------- board ---------- */
+  .board{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:start;}
+  @media(max-width:920px){.board{grid-template-columns:1fr;}}
+  .col{background:rgba(255,255,255,.015);border:1px solid var(--line);border-radius:var(--radius);padding:14px 14px 8px;}
+  .col-head{display:flex;align-items:center;justify-content:space-between;margin:2px 4px 14px;}
+  .col-head .ct{display:flex;align-items:center;gap:9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:19px;letter-spacing:.04em;text-transform:uppercase;}
+  .col-head .en{font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:12px;letter-spacing:.18em;color:var(--faint);text-transform:uppercase;}
+  .count{font-variant-numeric:tabular-nums;background:var(--panel-2);border:1px solid var(--line);border-radius:999px;padding:2px 9px;font-size:12px;color:var(--muted);font-weight:600;}
+  .col.live .bar{color:var(--live);}
+  .col.soon .bar{color:var(--soon);}
+  .col.done .bar{color:var(--done);}
+
+  .cards{display:flex;flex-direction:column;gap:11px;min-height:8px;}
+  .empty{color:var(--faint);font-size:13px;text-align:center;padding:22px 8px 28px;line-height:1.5;}
+
+  /* ---------- match card ---------- */
+  .match{
+    background:linear-gradient(180deg,var(--panel-2),var(--panel));
+    border:1px solid var(--line);border-radius:12px;padding:13px 14px 12px;
+    box-shadow:var(--shadow);position:relative;overflow:hidden;
+    transition:transform .14s ease, border-color .14s ease;
+  }
+  .match:hover{transform:translateY(-2px);border-color:#33446e;}
+  .match .accent{position:absolute;left:0;top:0;bottom:0;width:3px;}
+  .match.s-live .accent{background:var(--live);}
+  .match.s-soon .accent{background:var(--soon);}
+  .match.s-done .accent{background:var(--done);}
+
+  .m-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:11px;}
+  .status{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;}
+  .s-live .status{color:var(--live);}
+  .s-soon .status{color:var(--soon);}
+  .s-done .status{color:var(--done);}
+  .pulse{width:8px;height:8px;border-radius:50%;background:var(--live);box-shadow:0 0 0 0 var(--live-glow);animation:pulse 1.6s infinite;}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 var(--live-glow);}70%{box-shadow:0 0 0 7px rgba(255,59,70,0);}100%{box-shadow:0 0 0 0 rgba(255,59,70,0);}}
+  .kick{font-size:11.5px;color:var(--muted);font-variant-numeric:tabular-nums;}
+
+  .team-row{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:3px 0;}
+  .team{display:flex;align-items:center;gap:10px;min-width:0;}
+  .flag{font-size:21px;line-height:1;width:26px;text-align:center;flex:none;}
+  .tname{font-size:15px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .tabbr{font-size:11px;color:var(--faint);font-weight:600;letter-spacing:.05em;margin-left:1px;}
+  .score{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:24px;font-variant-numeric:tabular-nums;min-width:22px;text-align:right;}
+  .team-row.win .tname{color:#fff;}
+  .team-row.win .score{color:var(--done);}
+  .team-row.lose .tname,.team-row.lose .score{color:var(--muted);}
+  .vs-mid{height:1px;background:var(--line);margin:5px 0;}
+
+  /* win probability */
+  .wp{margin-top:12px;}
+  .wp-label{display:flex;justify-content:space-between;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-bottom:6px;font-family:'Barlow Condensed',sans-serif;font-weight:600;}
+  .wp-bar{display:flex;height:9px;border-radius:6px;overflow:hidden;background:var(--ink);}
+  .wp-bar span{display:block;height:100%;}
+  .wp-h{background:var(--homebar);}
+  .wp-d{background:var(--drawbar);}
+  .wp-a{background:var(--awaybar);}
+  .wp-vals{display:flex;justify-content:space-between;margin-top:6px;font-size:11.5px;font-variant-numeric:tabular-nums;}
+  .wp-vals .v{display:flex;align-items:center;gap:5px;color:var(--muted);}
+  .wp-vals .v b{color:var(--text);font-weight:700;}
+  .wp-vals .sw{width:8px;height:8px;border-radius:2px;display:inline-block;}
+
+  footer{margin-top:30px;color:var(--faint);font-size:12px;line-height:1.6;text-align:center;}
+  footer code{background:var(--panel);border:1px solid var(--line);padding:1px 6px;border-radius:5px;color:var(--muted);font-size:11.5px;}
+
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="board-head">
+    <div class="title-block">
+      <p class="eyebrow">FIFA World Cup 2026 · 美加墨</p>
+      <h1>世界杯赛事看板</h1>
+      <p class="sub">小组赛实时战况、赛程与赔率胜率，按状态分列。时间为本地时区显示。</p>
+    </div>
+    <div class="head-right">
+      <div class="updated">数据快照 · <b id="snap">—</b><br>本地刷新 · <b id="now">—</b></div>
+      <button class="refresh" id="refresh" aria-label="刷新看板">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg>
+        刷新
+      </button>
+    </div>
+  </header>
+
+  <div class="controls">
+    <div class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input id="search" type="search" placeholder="搜索球队（如 巴西 / Brazil / BRA）" autocomplete="off">
+    </div>
+    <div class="legend">
+      <span><i class="dot live"></i>进行中</span>
+      <span><i class="dot soon"></i>即将开始</span>
+      <span><i class="dot done"></i>已结束</span>
+    </div>
+  </div>
+
+  <div class="board" id="board"></div>
+
+  <footer>
+    胜率为赛前模型预测（主胜 / 平局 / 客胜）。比分与赛程取自数据快照，点击「刷新」会重新计算比赛进行时间并重新排序。<br>
+    若需真正的自动实时更新，需要接入体育数据 API（见对话末尾说明）。
+  </footer>
+</div>
+
+<script>
+/* ---- 数据快照（FIFA World Cup 2026 小组赛） ---- */
+let SNAPSHOT_ISO = "2026-06-20T17:10:00Z";
+const DATA_URL = "./data/matches.json"; // GitHub Actions 定时生成
+const POLL_MS = 60000;                  // 页面每 60s 拉一次最新数据
+
+const FLAGS = {
+  NED:"🇳🇱",SWE:"🇸🇪",GHA:"🇬🇭",PAN:"🇵🇦",UZB:"🇺🇿",COL:"🇨🇴",CZE:"🇨🇿",RSA:"🇿🇦",
+  SUI:"🇨🇭",BIH:"🇧🇦",CAN:"🇨🇦",QAT:"🇶🇦",MEX:"🇲🇽",KOR:"🇰🇷",USA:"🇺🇸",AUS:"🇦🇺",
+  SCO:"🏴󠁧󠁢󠁳󠁣󠁴󠁿",MAR:"🇲🇦",BRA:"🇧🇷",HTI:"🇭🇹",TUR:"🇹🇷",PAR:"🇵🇾",GER:"🇩🇪",CIV:"🇨🇮",
+  ECU:"🇪🇨",CUW:"🇨🇼",TUN:"🇹🇳",JPN:"🇯🇵",ESP:"🇪🇸",KSA:"🇸🇦",BEL:"🇧🇪",IRN:"🇮🇷",
+  URU:"🇺🇾",CPV:"🇨🇻",NZL:"🇳🇿",EGY:"🇪🇬",ARG:"🇦🇷",AUT:"🇦🇹",FRA:"🇫🇷",IRQ:"🇮🇶",
+  NOR:"🇳🇴",SEN:"🇸🇳"
+};
+/* 中文名映射，便于搜索 */
+const ZH = {
+  NED:"荷兰",SWE:"瑞典",GHA:"加纳",PAN:"巴拿马",UZB:"乌兹别克斯坦",COL:"哥伦比亚",CZE:"捷克",RSA:"南非",
+  SUI:"瑞士",BIH:"波黑",CAN:"加拿大",QAT:"卡塔尔",MEX:"墨西哥",KOR:"韩国",USA:"美国",AUS:"澳大利亚",
+  SCO:"苏格兰",MAR:"摩洛哥",BRA:"巴西",HTI:"海地",TUR:"土耳其",PAR:"巴拉圭",GER:"德国",CIV:"科特迪瓦",
+  ECU:"厄瓜多尔",CUW:"库拉索",TUN:"突尼斯",JPN:"日本",ESP:"西班牙",KSA:"沙特阿拉伯",BEL:"比利时",IRN:"伊朗",
+  URU:"乌拉圭",CPV:"佛得角",NZL:"新西兰",EGY:"埃及",ARG:"阿根廷",AUT:"奥地利",FRA:"法国",IRQ:"伊拉克",
+  NOR:"挪威",SEN:"塞内加尔"
+};
+
+let GAMES = [
+  {status:"in_progress",start:"2026-06-20T17:00:00Z",h:"NED",a:"SWE",hn:"Netherlands",an:"Sweden",hs:2,as:0,local:"6月20日 周六 10:00"},
+  {status:"scheduled",start:"2026-06-20T20:00:00Z",h:"GER",a:"CIV",hn:"Germany",an:"Ivory Coast",local:"6月20日 周六 13:00",wp:{h:65.5,d:19.7,a:14.8}},
+  {status:"scheduled",start:"2026-06-21T00:00:00Z",h:"ECU",a:"CUW",hn:"Ecuador",an:"Curacao",local:"6月20日 周六 17:00",wp:{h:86.7,d:9.5,a:3.8}},
+  {status:"scheduled",start:"2026-06-21T04:00:00Z",h:"TUN",a:"JPN",hn:"Tunisia",an:"Japan",local:"6月20日 周六 21:00",wp:{h:13.9,d:22.6,a:63.5}},
+  {status:"scheduled",start:"2026-06-21T16:00:00Z",h:"ESP",a:"KSA",hn:"Spain",an:"Saudi Arabia",local:"6月21日 周日 09:00",wp:{h:89,d:8.2,a:2.8}},
+  {status:"scheduled",start:"2026-06-21T19:00:00Z",h:"BEL",a:"IRN",hn:"Belgium",an:"IR Iran",local:"6月21日 周日 12:00",wp:{h:67.5,d:19.9,a:12.6}},
+  {status:"scheduled",start:"2026-06-21T22:00:00Z",h:"URU",a:"CPV",hn:"Uruguay",an:"Cape Verde",local:"6月21日 周日 15:00",wp:{h:66.6,d:22.2,a:11.2}},
+  {status:"scheduled",start:"2026-06-22T01:00:00Z",h:"NZL",a:"EGY",hn:"New Zealand",an:"Egypt",local:"6月21日 周日 18:00",wp:{h:16.6,d:23.9,a:59.5}},
+  {status:"scheduled",start:"2026-06-22T17:00:00Z",h:"ARG",a:"AUT",hn:"Argentina",an:"Austria",local:"6月22日 周一 10:00",wp:{h:61.1,d:23.2,a:15.7}},
+  {status:"scheduled",start:"2026-06-22T21:00:00Z",h:"FRA",a:"IRQ",hn:"France",an:"Iraq",local:"6月22日 周一 14:00",wp:{h:90.1,d:7.2,a:2.7}},
+  {status:"scheduled",start:"2026-06-23T00:00:00Z",h:"NOR",a:"SEN",hn:"Norway",an:"Senegal",local:"6月22日 周一 17:00",wp:{h:42.2,d:27.4,a:30.4}},
+  {status:"final",start:"2026-06-20T03:00:00Z",h:"TUR",a:"PAR",hn:"Turkiye",an:"Paraguay",hs:0,as:1,local:"6月19日 周五 20:00"},
+  {status:"final",start:"2026-06-20T00:30:00Z",h:"BRA",a:"HTI",hn:"Brazil",an:"Haiti",hs:3,as:0,local:"6月19日 周五 17:30"},
+  {status:"final",start:"2026-06-19T22:00:00Z",h:"SCO",a:"MAR",hn:"Scotland",an:"Morocco",hs:0,as:1,local:"6月19日 周五 15:00"},
+  {status:"final",start:"2026-06-19T19:00:00Z",h:"USA",a:"AUS",hn:"USA",an:"Australia",hs:2,as:0,local:"6月19日 周五 12:00"},
+  {status:"final",start:"2026-06-19T01:00:00Z",h:"MEX",a:"KOR",hn:"Mexico",an:"Korea Republic",hs:1,as:0,local:"6月18日 周四 18:00"},
+  {status:"final",start:"2026-06-18T22:00:00Z",h:"CAN",a:"QAT",hn:"Canada",an:"Qatar",hs:6,as:0,local:"6月18日 周四 15:00"},
+  {status:"final",start:"2026-06-18T19:00:00Z",h:"SUI",a:"BIH",hn:"Switzerland",an:"Bosnia & Herzegovina",hs:4,as:1,local:"6月18日 周四 12:00"},
+  {status:"final",start:"2026-06-18T16:00:00Z",h:"CZE",a:"RSA",hn:"Czechia",an:"South Africa",hs:1,as:1,local:"6月18日 周四 09:00"},
+  {status:"final",start:"2026-06-18T02:00:00Z",h:"UZB",a:"COL",hn:"Uzbekistan",an:"Colombia",hs:1,as:3,local:"6月17日 周三 19:00"},
+  {status:"final",start:"2026-06-17T23:00:00Z",h:"GHA",a:"PAN",hn:"Ghana",an:"Panama",hs:1,as:0,local:"6月17日 周三 16:00"}
+];
+
+/* ---- 渲染 ---- */
+const board = document.getElementById('board');
+const searchEl = document.getElementById('search');
+
+function fmtTime(d){
+  return d.toLocaleString('zh-CN',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit',hour12:false});
+}
+
+function liveMinute(startISO){
+  const mins = Math.floor((Date.now() - new Date(startISO).getTime())/60000);
+  if(mins < 0) return "即将开球";
+  if(mins <= 45) return mins + "'";
+  if(mins <= 60) return "中场休息";
+  if(mins < 90) return (mins - 15) + "'";
+  return "90'+";
+}
+
+function teamRow(abbr,name,score,result,flag){
+  const cls = result==="w"?"win":result==="l"?"lose":"";
+  const sc = score===undefined?"":`<div class="score">${score}</div>`;
+  return `<div class="team-row ${cls}">
+    <div class="team"><span class="flag">${flag||FLAGS[abbr]||"🏳️"}</span>
+      <span class="tname">${name}</span><span class="tabbr">${abbr}</span></div>
+    ${sc}</div>`;
+}
+
+function winProb(wp){
+  return `<div class="wp">
+    <div class="wp-label"><span>胜率预测</span><span>WIN PROBABILITY</span></div>
+    <div class="wp-bar"><span class="wp-h" style="width:${wp.h}%"></span><span class="wp-d" style="width:${wp.d}%"></span><span class="wp-a" style="width:${wp.a}%"></span></div>
+    <div class="wp-vals">
+      <span class="v"><i class="sw wp-h"></i>主 <b>${wp.h}%</b></span>
+      <span class="v"><i class="sw wp-d"></i>平 <b>${wp.d}%</b></span>
+      <span class="v"><i class="sw wp-a"></i>客 <b>${wp.a}%</b></span>
+    </div></div>`;
+}
+
+function card(g){
+  let statusTag, topRight, hres="", ares="";
+  if(g.status==="in_progress"){
+    statusTag = `<span class="status"><i class="pulse"></i>进行中</span>`;
+    topRight = `<span class="kick">${liveMinute(g.start)}</span>`;
+    if(g.hs>g.as){hres="w";ares="l";}else if(g.as>g.hs){hres="l";ares="w";}
+  }else if(g.status==="final"){
+    statusTag = `<span class="status">已结束 · FT</span>`;
+    topRight = `<span class="kick">${g.local}</span>`;
+    if(g.hs>g.as){hres="w";ares="l";}else if(g.as>g.hs){hres="l";ares="w";}
+  }else{
+    statusTag = `<span class="status">即将开始</span>`;
+    topRight = `<span class="kick">${g.local}</span>`;
+  }
+  const cls = g.status==="in_progress"?"s-live":g.status==="final"?"s-done":"s-soon";
+  return `<article class="match ${cls}">
+    <span class="accent"></span>
+    <div class="m-top">${statusTag}${topRight}</div>
+    ${teamRow(g.h,g.hn,g.hs,hres,g.hflag)}
+    <div class="vs-mid"></div>
+    ${teamRow(g.a,g.an,g.as,ares,g.aflag)}
+    ${g.wp?winProb(g.wp):""}
+  </article>`;
+}
+
+function column(key,ct,en,cls,games){
+  const cards = games.length
+    ? games.map(card).join("")
+    : `<div class="empty">没有匹配的比赛</div>`;
+  return `<section class="col ${cls}">
+    <div class="col-head">
+      <div class="ct"><span class="bar" style="font-size:22px;line-height:0">▍</span>${ct}<span class="en">${en}</span></div>
+      <span class="count">${games.length}</span>
+    </div>
+    <div class="cards">${cards}</div>
+  </section>`;
+}
+
+function matches(g,q){
+  if(!q) return true;
+  q=q.trim().toLowerCase();
+  return [g.h,g.a,g.hn,g.an,ZH[g.h],ZH[g.a]].some(x=>x&&x.toLowerCase().includes(q));
+}
+
+function render(){
+  const q = searchEl.value;
+  const pool = GAMES.filter(g=>matches(g,q));
+  const live = pool.filter(g=>g.status==="in_progress").sort((a,b)=>new Date(a.start)-new Date(b.start));
+  const soon = pool.filter(g=>g.status==="scheduled").sort((a,b)=>new Date(a.start)-new Date(b.start));
+  const done = pool.filter(g=>g.status==="final").sort((a,b)=>new Date(b.start)-new Date(a.start));
+  board.innerHTML =
+    column("live","进行中","LIVE","live",live) +
+    column("soon","即将开始","UPCOMING","soon",soon) +
+    column("done","已结束","FINAL","done",done);
+}
+
+function stamp(){
+  document.getElementById('snap').textContent = fmtTime(new Date(SNAPSHOT_ISO));
+  document.getElementById('now').textContent = fmtTime(new Date());
+}
+
+document.getElementById('refresh').addEventListener('click',e=>{
+  const btn = e.currentTarget;
+  btn.classList.remove('spin'); void btn.offsetWidth; btn.classList.add('spin');
+  loadData(true);
+});
+searchEl.addEventListener('input',render);
+
+async function loadData(force){
+  try{
+    const res = await fetch(DATA_URL + (force?`?t=${Date.now()}`:''), {cache:'no-store'});
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    const data = await res.json();
+    if(Array.isArray(data.games) && data.games.length){
+      GAMES = data.games;
+      if(data.snapshot) SNAPSHOT_ISO = data.snapshot;
+    }
+  }catch(err){
+    // 拉取失败(如本地 file:// 打开、或 JSON 尚未生成)→ 沿用内嵌兜底数据
+    console.warn('使用内嵌兜底数据:', err.message);
+  }
+  stamp(); render();
+}
+
+loadData();
+// 数据层:每 POLL_MS 拉一次最新 JSON;比赛进行时钟另由内部计算
+setInterval(loadData, POLL_MS);
+// 进行中比赛每 30s 重算比赛分钟
+setInterval(()=>{ if(GAMES.some(g=>g.status==="in_progress")){ stamp(); render(); } },30000);
+</script>
+</body>
+</html>
