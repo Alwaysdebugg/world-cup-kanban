@@ -78,8 +78,11 @@ async function fetchWinProbs() {
 }
 
 function matchWinProb(probMap, homeName, awayName) {
+  // 球队未定的场次队名可能为 null,直接跳过避免 .includes 崩溃
+  if (!homeName || !awayName) return null;
   for (const [key, wp] of probMap) {
     const [h, a] = key.split("|");
+    if (!h || !a) continue;
     if (homeName.includes(h) || h.includes(homeName)) {
       if (awayName.includes(a) || a.includes(awayName)) return wp;
     }
