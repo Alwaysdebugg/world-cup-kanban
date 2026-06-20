@@ -17,18 +17,18 @@ FOOTBALL_DATA_KEY=<token> ODDS_API_KEY=<token> node fetch-matches.mjs   # also a
 python3 -m http.server 8000     # then open http://localhost:8000/
 ```
 
-Environment variables read by `fetch-matches.mjs`: `FOOTBALL_DATA_KEY` (required, football-data.org), `ODDS_API_KEY` (optional, the-odds-api.com — win probabilities are omitted without it), `FD_COMPETITION` (default `WC`), `DISPLAY_TZ` (default `America/Vancouver`), output is hardcoded to `data/matches.json`.
+Environment variables read by `fetch-matches.mjs`: `FOOTBALL_DATA_KEY` (required, football-data.org), `ODDS_API_KEY` (optional, the-odds-api.com — win probabilities are omitted without it), `FD_COMPETITION` (default `WC`), `DISPLAY_TZ` (default `America/Vancouver`), `ODDS_INTERVAL_MIN` (default `10` — minimum minutes between the-odds-api calls; the fetcher reuses the previous run's `wp` within this window), output is hardcoded to `data/matches.json`.
 
 ## Architecture & data flow
 
 ```
 scripts/fetch-matches.mjs  --writes-->  data/matches.json  --polled by-->  index.html
-        (CI, every 10m)                                       (browser, every 60s)
+        (CI, every 5m)                                        (browser, every 60s)
 ```
 
 1. **`fetch-matches.mjs`** pulls the schedule/scores from football-data.org and (optionally) odds from the-odds-api.com, converts odds to vig-removed implied win probabilities, and emits `{ snapshot, games: [...] }`. The `game` shape it produces is the contract the page consumes: `{status, start, h, a, hn, an, local, hs?, as?, wp?}` where `h`/`a` are TLA codes (e.g. `BRA`), `hn`/`an` are display names, `hs`/`as` are scores (only when in-progress/final), and `wp` is `{h, d, a}` percentages (only when scheduled).
 2. **`index.html`** is fully self-contained (inline CSS + JS). On load and every 60s it fetches `./data/matches.json`; **if that fails it silently falls back to the `GAMES` array hardcoded near the top of the `<script>`** (this is why the page still works opened directly or before any JSON exists). The live match-minute clock is computed client-side from `start` (`liveMinute`), independent of the data poll. `FLAGS` and `ZH` maps (keyed by TLA) provide emoji flags and Chinese names for rendering and search.
-3. **`update-matches.yml`** is the GitHub Actions workflow: runs the fetcher on a 10-min cron (plus push/manual), commits `data/matches.json` if changed, then builds + deploys the whole repo root to GitHub Pages.
+3. **`update-matches.yml`** is the GitHub Actions workflow: runs the fetcher on a 5-min cron (plus push/manual), commits `data/matches.json` if changed, then builds + deploys the whole repo root to GitHub Pages. Scores refresh every run; the odds call self-throttles inside the fetcher to ~every 10 min (`ODDS_INTERVAL_MIN`, default 10) — it reads the previous `data/matches.json` `oddsAt` timestamp and reuses the prior `wp` values when within the window, so bumping the cron frequency doesn't burn the-odds-api quota.
 
 ### Status mapping
 football-data statuses collapse to three board states in `mapStatus`: `IN_PLAY`/`PAUSED` → `in_progress`, `FINISHED` → `final`, `SCHEDULED`/`TIMED` → `scheduled`; anything else (POSTPONED/CANCELLED/…) is dropped. The page's three columns key off these exact strings — keep them in sync if you touch either side.

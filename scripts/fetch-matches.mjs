@@ -3,7 +3,7 @@
 // 运行: node scripts/fetch-matches.mjs
 // 依赖: Node 18+ (内置 fetch),无需 npm 安装
 
-import { writeFile, mkdir } from "node:fs/promises";
+import { writeFile, readFile, mkdir } from "node:fs/promises";
 
 // ---- 配置(用环境变量传 key,别写死在代码里)----
 const FD_KEY = process.env.FOOTBALL_DATA_KEY;          // football-data.org token(必填)
@@ -11,6 +11,9 @@ const FD_COMP = process.env.FD_COMPETITION || "WC";    // FIFA World Cup
 const ODDS_KEY = process.env.ODDS_API_KEY || "";       // the-odds-api.com(可选,用于胜率)
 const TZ = process.env.DISPLAY_TZ || "America/Vancouver"; // 卡片显示用的时区
 const OUT = "data/matches.json";
+// 比分每次运行都刷新(CI 约 5 分钟一跑);但 odds 单独限流:距上次拉取不满
+// ODDS_INTERVAL_MIN 分钟就复用上次胜率,不再调 the-odds-api(省配额)。
+const ODDS_INTERVAL_MIN = +(process.env.ODDS_INTERVAL_MIN || 10);
 
 if (!FD_KEY) {
   console.error("缺少 FOOTBALL_DATA_KEY 环境变量"); process.exit(1);
@@ -90,9 +93,37 @@ function matchWinProb(probMap, homeName, awayName) {
   return null;
 }
 
+// 读取上一份 data/matches.json(用于 odds 限流与复用上次胜率);不存在/损坏返回 null
+async function readPrev() {
+  try {
+    return JSON.parse(await readFile(OUT, "utf8"));
+  } catch {
+    return null;
+  }
+}
+
 // ---- 3. 组装并写文件 ----
 async function main() {
-  const [raw, probMap] = await Promise.all([fetchMatches(), fetchWinProbs()]);
+  const prev = await readPrev();
+  const now = Date.now();
+
+  // 是否需要重新拉 odds:有 key 且距上次拉取已满阈值(留 1 分钟余量抗 cron 抖动)
+  const prevOddsAt = prev?.oddsAt ? new Date(prev.oddsAt).getTime() : 0;
+  const oddsThresholdMs = Math.max(0, ODDS_INTERVAL_MIN - 1) * 60 * 1000;
+  const refreshOdds = !!ODDS_KEY && (now - prevOddsAt >= oddsThresholdMs);
+
+  // 比分每次都拉;odds 仅在到点时才拉,否则沿用上次结果
+  const [raw, freshProb] = await Promise.all([
+    fetchMatches(),
+    refreshOdds ? fetchWinProbs() : Promise.resolve(null)
+  ]);
+  const oddsAt = refreshOdds ? new Date(now).toISOString() : (prev?.oddsAt || null);
+
+  // 上次各场的胜率,按 "主TLA|客TLA" 建索引,供本次复用/兜底
+  const prevWp = new Map();
+  for (const pg of prev?.games || []) {
+    if (pg.wp) prevWp.set(`${pg.h}|${pg.a}`, pg.wp);
+  }
 
   const games = [];
   for (const m of raw) {
@@ -116,16 +147,18 @@ async function main() {
       g.as = m.score?.fullTime?.away ?? 0;
     }
     if (status === "scheduled") {
-      const wp = matchWinProb(probMap, g.hn, g.an);
+      // 本轮拉到新 odds 就用新的;没拉(限流中)或没匹配到则沿用上次胜率
+      let wp = freshProb ? matchWinProb(freshProb, g.hn, g.an) : null;
+      if (!wp) wp = prevWp.get(`${g.h}|${g.a}`) || null;
       if (wp) g.wp = wp;
     }
     games.push(g);
   }
 
-  const payload = { snapshot: new Date().toISOString(), games };
+  const payload = { snapshot: new Date().toISOString(), oddsAt, games };
   await mkdir("data", { recursive: true });
   await writeFile(OUT, JSON.stringify(payload, null, 2));
-  console.log(`已写入 ${OUT}:${games.length} 场比赛`);
+  console.log(`已写入 ${OUT}:${games.length} 场比赛(odds ${refreshOdds ? "已刷新" : "复用上次"})`);
 }
 
 main().catch(e => { console.error(e); process.exit(1); });
