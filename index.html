@@ -209,7 +209,7 @@ const POLL_MS = 60000;                  // 页面每 60s 拉一次最新数据
 // 进行中比赛的实时比分:走 Vercel 代理(api/live),比 5 分钟的静态数据快得多。
 // 部署 Vercel 后填成你的地址,如 "https://world-cup-kanban.vercel.app/api/live";
 // 若整站托管在 Vercel,可直接用相对路径 "/api/live"。留空("")则关闭实时刷新。
-const LIVE_URL = "";
+const LIVE_URL = "/api/live";
 const LIVE_POLL_MS = 25000;             // 有进行中比赛时,每 25s 拉一次实时比分
 
 const FLAGS = {
