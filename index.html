@@ -203,8 +203,14 @@
 <script>
 /* ---- 数据快照（FIFA World Cup 2026 小组赛） ---- */
 let SNAPSHOT_ISO = "2026-06-20T17:10:00Z";
-const DATA_URL = "./data/matches.json"; // GitHub Actions 定时生成
+const DATA_URL = "./data/matches.json"; // GitHub Actions 定时生成(整体赛程/已结束/胜率)
 const POLL_MS = 60000;                  // 页面每 60s 拉一次最新数据
+
+// 进行中比赛的实时比分:走 Vercel 代理(api/live),比 5 分钟的静态数据快得多。
+// 部署 Vercel 后填成你的地址,如 "https://world-cup-kanban.vercel.app/api/live";
+// 若整站托管在 Vercel,可直接用相对路径 "/api/live"。留空("")则关闭实时刷新。
+const LIVE_URL = "";
+const LIVE_POLL_MS = 25000;             // 有进行中比赛时,每 25s 拉一次实时比分
 
 const FLAGS = {
   NED:"🇳🇱",SWE:"🇸🇪",GHA:"🇬🇭",PAN:"🇵🇦",UZB:"🇺🇿",COL:"🇨🇴",CZE:"🇨🇿",RSA:"🇿🇦",
@@ -349,7 +355,7 @@ function stamp(){
 document.getElementById('refresh').addEventListener('click',e=>{
   const btn = e.currentTarget;
   btn.classList.remove('spin'); void btn.offsetWidth; btn.classList.add('spin');
-  loadData(true);
+  loadData(true); pollLive(true);
 });
 searchEl.addEventListener('input',render);
 
@@ -369,9 +375,46 @@ async function loadData(force){
   stamp(); render();
 }
 
+/* ---- 进行中比赛实时刷新(Vercel 代理) ---- */
+const gameKey = g => `${g.h}|${g.a}|${g.start}`;
+
+// 仅当有进行中、或已到开球时间(静态数据还没标记为进行中)的比赛时才轮询
+function liveWorthPolling(){
+  return GAMES.some(g =>
+    g.status==="in_progress" ||
+    (g.status==="scheduled" && new Date(g.start).getTime() <= Date.now()+60000));
+}
+
+async function pollLive(force){
+  if(!LIVE_URL) return;                 // 未配置代理则不启用
+  if(!force && !liveWorthPolling()) return;
+  try{
+    const res = await fetch(LIVE_URL + (force?`?t=${Date.now()}`:''), {cache:'no-store'});
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    const data = await res.json();
+    if(!Array.isArray(data.games)) return;
+    const byKey = new Map(GAMES.map(g=>[gameKey(g),g]));
+    let changed = false;
+    for(const lv of data.games){
+      const g = byKey.get(gameKey(lv));
+      if(!g) continue;                  // 整体赛程要等 60s 静态轮询补齐,这里只更新已知卡片
+      if(g.status!=="in_progress" || g.hs!==lv.hs || g.as!==lv.as) changed = true;
+      g.status="in_progress"; g.hs=lv.hs; g.as=lv.as; delete g.wp;
+    }
+    if(data.snapshot) SNAPSHOT_ISO = data.snapshot;
+    if(changed) render();
+    stamp();
+  }catch(err){
+    console.warn('实时比分拉取失败,沿用静态数据:', err.message);
+  }
+}
+
 loadData();
+pollLive();
 // 数据层:每 POLL_MS 拉一次最新 JSON;比赛进行时钟另由内部计算
 setInterval(loadData, POLL_MS);
+// 进行中比赛比分:每 LIVE_POLL_MS 走代理实时刷新
+setInterval(pollLive, LIVE_POLL_MS);
 // 进行中比赛每 30s 重算比赛分钟
 setInterval(()=>{ if(GAMES.some(g=>g.status==="in_progress")){ stamp(); render(); } },30000);
 </script>
