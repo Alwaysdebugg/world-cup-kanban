@@ -48,10 +48,11 @@ jobs:
           git diff --staged --quiet || git commit -m "chore: refresh match data [skip ci]"
           git push
 
+      # 注意:首次需在 Settings → Pages → Source 手动选 "GitHub Actions"。
+      # 默认 GITHUB_TOKEN 无权限自动创建 Pages 站点(enablement 会报
+      # "Resource not accessible by integration"),所以这里不自动开启。
       - name: Setup Pages
         uses: actions/configure-pages@v5
-        with:
-          enablement: true        # 首次运行自动开启 Pages(免去手动到 Settings 里设置)
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
