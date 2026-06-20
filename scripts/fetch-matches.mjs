@@ -98,13 +98,17 @@ async function main() {
   for (const m of raw) {
     const status = mapStatus(m.status);
     if (!status) continue;
+    // 跳过球队未定的占位场次(淘汰赛对阵还没产生时,队名为 null)
+    const hn = m.homeTeam?.shortName || m.homeTeam?.name;
+    const an = m.awayTeam?.shortName || m.awayTeam?.name;
+    if (!hn || !an) continue;
     const g = {
       status,
       start: m.utcDate,
-      h: m.homeTeam.tla || m.homeTeam.shortName || m.homeTeam.name,
-      a: m.awayTeam.tla || m.awayTeam.shortName || m.awayTeam.name,
-      hn: m.homeTeam.shortName || m.homeTeam.name,
-      an: m.awayTeam.shortName || m.awayTeam.name,
+      h: m.homeTeam.tla || hn,
+      a: m.awayTeam.tla || an,
+      hn,
+      an,
       local: localLabel(m.utcDate)
     };
     if (status === "in_progress" || status === "final") {
