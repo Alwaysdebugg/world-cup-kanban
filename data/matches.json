@@ -1,5 +1,5 @@
 {
-  "snapshot": "2026-06-20T23:02:28.291Z",
+  "snapshot": "2026-06-20T23:03:39.474Z",
   "oddsAt": "2026-06-20T23:02:27.820Z",
   "games": [
     {
@@ -160,7 +160,7 @@
       "status": "final",
       "start": "2026-06-15T22:00:00Z",
       "h": "KSA",
-      "a": "URU",
+      "a": "URY",
       "hn": "Saudi Arabia",
       "an": "Uruguay",
       "local": "6/15 周一 15:00",
@@ -435,16 +435,11 @@
     {
       "status": "scheduled",
       "start": "2026-06-21T22:00:00Z",
-      "h": "URU",
+      "h": "URY",
       "a": "CPV",
       "hn": "Uruguay",
       "an": "Cape Verde",
-      "local": "6/21 周日 15:00",
-      "wp": {
-        "h": 64.3,
-        "d": 23.9,
-        "a": 11.8
-      }
+      "local": "6/21 周日 15:00"
     },
     {
       "status": "scheduled",
@@ -751,16 +746,11 @@
     {
       "status": "scheduled",
       "start": "2026-06-27T00:00:00Z",
-      "h": "URU",
+      "h": "URY",
       "a": "ESP",
       "hn": "Uruguay",
       "an": "Spain",
-      "local": "6/26 周五 17:00",
-      "wp": {
-        "h": 15.3,
-        "d": 21.5,
-        "a": 63.2
-      }
+      "local": "6/26 周五 17:00"
     },
     {
       "status": "scheduled",
