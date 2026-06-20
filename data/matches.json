@@ -1,5 +1,5 @@
 {
-  "snapshot": "2026-06-20T21:29:34.686Z",
+  "snapshot": "2026-06-20T21:35:33.467Z",
   "games": [
     {
       "status": "final",
@@ -159,7 +159,7 @@
       "status": "final",
       "start": "2026-06-15T22:00:00Z",
       "h": "KSA",
-      "a": "URY",
+      "a": "URU",
       "hn": "Saudi Arabia",
       "an": "Uruguay",
       "local": "6/15 周一 15:00",
@@ -434,7 +434,7 @@
     {
       "status": "scheduled",
       "start": "2026-06-21T22:00:00Z",
-      "h": "URY",
+      "h": "URU",
       "a": "CPV",
       "hn": "Uruguay",
       "an": "Cape Verde",
@@ -750,7 +750,7 @@
     {
       "status": "scheduled",
       "start": "2026-06-27T00:00:00Z",
-      "h": "URY",
+      "h": "URU",
       "a": "ESP",
       "hn": "Uruguay",
       "an": "Spain",
@@ -881,294 +881,6 @@
         "d": 30.1,
         "a": 37.5
       }
-    },
-    {
-      "status": "scheduled",
-      "start": "2026-06-28T19:00:00Z",
-      "h": null,
-      "a": null,
-      "hn": null,
-      "an": null,
-      "local": "6/28 周日 12:00"
-    },
-    {
-      "status": "scheduled",
-      "start": "2026-06-29T17:00:00Z",
-      "h": null,
-      "a": null,
-      "hn": null,
-      "an": null,
-      "local": "6/29 周一 10:00"
-    },
-    {
-      "status": "scheduled",
-      "start": "2026-06-29T20:30:00Z",
-      "h": null,
-      "a": null,
-      "hn": null,
-      "an": null,
-      "local": "6/29 周一 13:30"
-    },
-    {
-      "status": "scheduled",
-      "start": "2026-06-30T01:00:00Z",
-      "h": null,
-      "a": null,
-      "hn": null,
-      "an": null,
-      "local": "6/29 周一 18:00"
-    },
-    {
-      "status": "scheduled",
-      "start": "2026-06-30T17:00:00Z",
-      "h": null,
-      "a": null,
-      "hn": null,
-      "an": null,
-      "local": "6/30 周二 10:00"
-    },
-    {
-      "status": "scheduled",
-      "start": "2026-06-30T21:00:00Z",
-      "h": null,
-      "a": null,
-      "hn": null,
-      "an": null,
-      "local": "6/30 周二 14:00"
-    },
-    {
-      "status": "scheduled",
-      "start": "2026-07-01T01:00:00Z",
-      "h": null,
-      "a": null,
-      "hn": null,
-      "an": null,
-      "local": "6/30 周二 18:00"
-    },
-    {
-      "status": "scheduled",
-      "start": "2026-07-01T16:00:00Z",
-      "h": null,
-      "a": null,
-      "hn": null,
-      "an": null,
-      "local": "7/1 周三 09:00"
-    },
-    {
-      "status": "scheduled",
-      "start": "2026-07-01T20:00:00Z",
-      "h": null,
-      "a": null,
-      "hn": null,
-      "an": null,
-      "local": "7/1 周三 13:00"
-    },
-    {
-      "status": "scheduled",
-      "start": "2026-07-02T00:00:00Z",
-      "h": null,
-      "a": null,
-      "hn": null,
-      "an": null,
-      "local": "7/1 周三 17:00"
-    },
-    {
-      "status": "scheduled",
-      "start": "2026-07-02T19:00:00Z",
-      "h": null,
-      "a": null,
-      "hn": null,
-      "an": null,
-      "local": "7/2 周四 12:00"
-    },
-    {
-      "status": "scheduled",
-      "start": "2026-07-02T23:00:00Z",
-      "h": null,
-      "a": null,
-      "hn": null,
-      "an": null,
-      "local": "7/2 周四 16:00"
-    },
-    {
-      "status": "scheduled",
-      "start": "2026-07-03T03:00:00Z",
-      "h": null,
-      "a": null,
-      "hn": null,
-      "an": null,
-      "local": "7/2 周四 20:00"
-    },
-    {
-      "status": "scheduled",
-      "start": "2026-07-03T18:00:00Z",
-      "h": null,
-      "a": null,
-      "hn": null,
-      "an": null,
-      "local": "7/3 周五 11:00"
-    },
-    {
-      "status": "scheduled",
-      "start": "2026-07-03T22:00:00Z",
-      "h": null,
-      "a": null,
-      "hn": null,
-      "an": null,
-      "local": "7/3 周五 15:00"
-    },
-    {
-      "status": "scheduled",
-      "start": "2026-07-04T01:30:00Z",
-      "h": null,
-      "a": null,
-      "hn": null,
-      "an": null,
-      "local": "7/3 周五 18:30"
-    },
-    {
-      "status": "scheduled",
-      "start": "2026-07-04T17:00:00Z",
-      "h": null,
-      "a": null,
-      "hn": null,
-      "an": null,
-      "local": "7/4 周六 10:00"
-    },
-    {
-      "status": "scheduled",
-      "start": "2026-07-04T21:00:00Z",
-      "h": null,
-      "a": null,
-      "hn": null,
-      "an": null,
-      "local": "7/4 周六 14:00"
-    },
-    {
-      "status": "scheduled",
-      "start": "2026-07-05T20:00:00Z",
-      "h": null,
-      "a": null,
-      "hn": null,
-      "an": null,
-      "local": "7/5 周日 13:00"
-    },
-    {
-      "status": "scheduled",
-      "start": "2026-07-06T00:00:00Z",
-      "h": null,
-      "a": null,
-      "hn": null,
-      "an": null,
-      "local": "7/5 周日 17:00"
-    },
-    {
-      "status": "scheduled",
-      "start": "2026-07-06T19:00:00Z",
-      "h": null,
-      "a": null,
-      "hn": null,
-      "an": null,
-      "local": "7/6 周一 12:00"
-    },
-    {
-      "status": "scheduled",
-      "start": "2026-07-07T00:00:00Z",
-      "h": null,
-      "a": null,
-      "hn": null,
-      "an": null,
-      "local": "7/6 周一 17:00"
-    },
-    {
-      "status": "scheduled",
-      "start": "2026-07-07T16:00:00Z",
-      "h": null,
-      "a": null,
-      "hn": null,
-      "an": null,
-      "local": "7/7 周二 09:00"
-    },
-    {
-      "status": "scheduled",
-      "start": "2026-07-07T20:00:00Z",
-      "h": null,
-      "a": null,
-      "hn": null,
-      "an": null,
-      "local": "7/7 周二 13:00"
-    },
-    {
-      "status": "scheduled",
-      "start": "2026-07-09T20:00:00Z",
-      "h": null,
-      "a": null,
-      "hn": null,
-      "an": null,
-      "local": "7/9 周四 13:00"
-    },
-    {
-      "status": "scheduled",
-      "start": "2026-07-10T19:00:00Z",
-      "h": null,
-      "a": null,
-      "hn": null,
-      "an": null,
-      "local": "7/10 周五 12:00"
-    },
-    {
-      "status": "scheduled",
-      "start": "2026-07-11T21:00:00Z",
-      "h": null,
-      "a": null,
-      "hn": null,
-      "an": null,
-      "local": "7/11 周六 14:00"
-    },
-    {
-      "status": "scheduled",
-      "start": "2026-07-12T01:00:00Z",
-      "h": null,
-      "a": null,
-      "hn": null,
-      "an": null,
-      "local": "7/11 周六 18:00"
-    },
-    {
-      "status": "scheduled",
-      "start": "2026-07-14T19:00:00Z",
-      "h": null,
-      "a": null,
-      "hn": null,
-      "an": null,
-      "local": "7/14 周二 12:00"
-    },
-    {
-      "status": "scheduled",
-      "start": "2026-07-15T19:00:00Z",
-      "h": null,
-      "a": null,
-      "hn": null,
-      "an": null,
-      "local": "7/15 周三 12:00"
-    },
-    {
-      "status": "scheduled",
-      "start": "2026-07-18T21:00:00Z",
-      "h": null,
-      "a": null,
-      "hn": null,
-      "an": null,
-      "local": "7/18 周六 14:00"
-    },
-    {
-      "status": "scheduled",
-      "start": "2026-07-19T19:00:00Z",
-      "h": null,
-      "a": null,
-      "hn": null,
-      "an": null,
-      "local": "7/19 周日 12:00"
     }
   ]
 }
