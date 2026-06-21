@@ -154,6 +154,28 @@
   .wp-vals .v b{color:var(--text);font-weight:700;}
   .wp-vals .sw{width:8px;height:8px;border-radius:2px;display:inline-block;}
 
+  /* ---------- standings ---------- */
+  .section-head{display:flex;align-items:baseline;gap:12px;margin:42px 2px 18px;padding-top:24px;border-top:1px solid var(--line);}
+  .section-head h2{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:26px;letter-spacing:.03em;text-transform:uppercase;margin:0;}
+  .section-head .en{font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:13px;letter-spacing:.18em;color:var(--faint);text-transform:uppercase;}
+  .groups{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:start;}
+  @media(max-width:920px){.groups{grid-template-columns:1fr;}}
+  .grp{background:rgba(255,255,255,.015);border:1px solid var(--line);border-radius:var(--radius);padding:12px 12px 8px;}
+  .grp h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:16px;letter-spacing:.06em;text-transform:uppercase;margin:2px 4px 10px;color:var(--soon);}
+  table.tbl{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;}
+  .tbl th{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);text-align:right;padding:4px 4px 7px;border-bottom:1px solid var(--line);}
+  .tbl th.team-col{text-align:left;}
+  .tbl td{font-size:13px;padding:6px 4px;text-align:right;border-bottom:1px solid rgba(36,49,80,.5);}
+  .tbl tr:last-child td{border-bottom:none;}
+  .tbl td.team-col{text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:120px;}
+  .tbl td.pts{font-weight:700;color:var(--text);}
+  .tbl .pos{color:var(--faint);width:18px;}
+  .tbl .qual td{} /* 出线区(前两名)左侧高亮 */
+  .tbl tr.qual td.pos{color:var(--done);position:relative;}
+  .tbl tr.qual td.pos::before{content:"";position:absolute;left:-8px;top:4px;bottom:4px;width:2px;background:var(--done);border-radius:2px;}
+  .tbl .gfa{color:var(--muted);}
+  .tflag{margin-right:6px;}
+
   footer{margin-top:30px;color:var(--faint);font-size:12px;line-height:1.6;text-align:center;}
   footer code{background:var(--panel);border:1px solid var(--line);padding:1px 6px;border-radius:5px;color:var(--muted);font-size:11.5px;}
 
@@ -193,6 +215,8 @@
   </div>
 
   <div class="board" id="board"></div>
+
+  <section id="standings"></section>
 
   <footer>
     胜率为赛前模型预测（主胜 / 平局 / 客胜）。比分与赛程取自数据快照，点击「刷新」会重新计算比赛进行时间并重新排序。<br>
@@ -335,6 +359,34 @@ function matches(g,q){
   return [g.h,g.a,g.hn,g.an,ZH[g.h],ZH[g.a]].some(x=>x&&x.toLowerCase().includes(q));
 }
 
+/* ---- 小组积分榜 ---- */
+const standingsEl = document.getElementById('standings');
+let STANDINGS = [];
+
+function groupTable(grp){
+  const rows = grp.table.map(r=>`
+    <tr class="${r.pos<=2?'qual':''}">
+      <td class="pos">${r.pos}</td>
+      <td class="team-col"><span class="tflag">${FLAGS[r.tla]||'🏳️'}</span>${r.name||r.tla}</td>
+      <td>${r.p}</td><td>${r.w}</td><td>${r.d}</td><td>${r.l}</td>
+      <td class="gfa">${r.gf}:${r.ga}</td><td>${r.gd>0?'+'+r.gd:r.gd}</td>
+      <td class="pts">${r.pts}</td>
+    </tr>`).join("");
+  return `<div class="grp"><h3>小组 ${grp.group}</h3>
+    <table class="tbl"><thead><tr>
+      <th class="pos"></th><th class="team-col">球队</th>
+      <th>赛</th><th>胜</th><th>平</th><th>负</th><th>进:失</th><th>净</th><th>分</th>
+    </tr></thead><tbody>${rows}</tbody></table></div>`;
+}
+
+function renderStandings(){
+  if(!Array.isArray(STANDINGS) || !STANDINGS.length){ standingsEl.innerHTML=''; return; }
+  const sorted = [...STANDINGS].sort((a,b)=>a.group.localeCompare(b.group));
+  standingsEl.innerHTML =
+    `<div class="section-head"><h2>小组积分榜</h2><span class="en">Group Standings · 绿条为出线区(前两名)</span></div>
+     <div class="groups">${sorted.map(groupTable).join("")}</div>`;
+}
+
 function render(){
   const q = searchEl.value;
   const pool = GAMES.filter(g=>matches(g,q));
@@ -368,11 +420,12 @@ async function loadData(force){
       GAMES = data.games;
       if(data.snapshot) SNAPSHOT_ISO = data.snapshot;
     }
+    if(Array.isArray(data.standings)) STANDINGS = data.standings;
   }catch(err){
     // 拉取失败(如本地 file:// 打开、或 JSON 尚未生成)→ 沿用内嵌兜底数据
     console.warn('使用内嵌兜底数据:', err.message);
   }
-  stamp(); render();
+  stamp(); render(); renderStandings();
 }
 
 /* ---- 进行中比赛实时刷新(Vercel 代理) ---- */
