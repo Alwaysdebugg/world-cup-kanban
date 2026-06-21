@@ -1,5 +1,5 @@
 {
-  "snapshot": "2026-06-21T20:07:34.415Z",
+  "snapshot": "2026-06-21T20:10:28.252Z",
   "oddsAt": "2026-06-21T20:07:33.811Z",
   "games": [
     {
@@ -870,6 +870,692 @@
         "d": 30.1,
         "a": 37.5
       }
+    }
+  ],
+  "standings": [
+    {
+      "group": "Group A",
+      "table": [
+        {
+          "pos": 1,
+          "tla": "MEX",
+          "name": "Mexico",
+          "p": 2,
+          "w": 2,
+          "d": 0,
+          "l": 0,
+          "gf": 3,
+          "ga": 0,
+          "gd": 3,
+          "pts": 6
+        },
+        {
+          "pos": 2,
+          "tla": "KOR",
+          "name": "Korea Republic",
+          "p": 2,
+          "w": 1,
+          "d": 0,
+          "l": 1,
+          "gf": 2,
+          "ga": 2,
+          "gd": 0,
+          "pts": 3
+        },
+        {
+          "pos": 3,
+          "tla": "CZE",
+          "name": "Czechia",
+          "p": 2,
+          "w": 0,
+          "d": 1,
+          "l": 1,
+          "gf": 2,
+          "ga": 3,
+          "gd": -1,
+          "pts": 1
+        },
+        {
+          "pos": 4,
+          "tla": "RSA",
+          "name": "South Africa",
+          "p": 2,
+          "w": 0,
+          "d": 1,
+          "l": 1,
+          "gf": 1,
+          "ga": 3,
+          "gd": -2,
+          "pts": 1
+        }
+      ]
+    },
+    {
+      "group": "Group B",
+      "table": [
+        {
+          "pos": 1,
+          "tla": "CAN",
+          "name": "Canada",
+          "p": 2,
+          "w": 1,
+          "d": 1,
+          "l": 0,
+          "gf": 7,
+          "ga": 1,
+          "gd": 6,
+          "pts": 4
+        },
+        {
+          "pos": 2,
+          "tla": "SUI",
+          "name": "Switzerland",
+          "p": 2,
+          "w": 1,
+          "d": 1,
+          "l": 0,
+          "gf": 5,
+          "ga": 2,
+          "gd": 3,
+          "pts": 4
+        },
+        {
+          "pos": 3,
+          "tla": "BIH",
+          "name": "Bosnia-H.",
+          "p": 2,
+          "w": 0,
+          "d": 1,
+          "l": 1,
+          "gf": 2,
+          "ga": 5,
+          "gd": -3,
+          "pts": 1
+        },
+        {
+          "pos": 4,
+          "tla": "QAT",
+          "name": "Qatar",
+          "p": 2,
+          "w": 0,
+          "d": 1,
+          "l": 1,
+          "gf": 1,
+          "ga": 7,
+          "gd": -6,
+          "pts": 1
+        }
+      ]
+    },
+    {
+      "group": "Group C",
+      "table": [
+        {
+          "pos": 1,
+          "tla": "BRA",
+          "name": "Brazil",
+          "p": 2,
+          "w": 1,
+          "d": 1,
+          "l": 0,
+          "gf": 4,
+          "ga": 1,
+          "gd": 3,
+          "pts": 4
+        },
+        {
+          "pos": 2,
+          "tla": "MAR",
+          "name": "Morocco",
+          "p": 2,
+          "w": 1,
+          "d": 1,
+          "l": 0,
+          "gf": 2,
+          "ga": 1,
+          "gd": 1,
+          "pts": 4
+        },
+        {
+          "pos": 3,
+          "tla": "SCO",
+          "name": "Scotland",
+          "p": 2,
+          "w": 1,
+          "d": 0,
+          "l": 1,
+          "gf": 1,
+          "ga": 1,
+          "gd": 0,
+          "pts": 3
+        },
+        {
+          "pos": 4,
+          "tla": "HAI",
+          "name": "Haiti",
+          "p": 2,
+          "w": 0,
+          "d": 0,
+          "l": 2,
+          "gf": 0,
+          "ga": 4,
+          "gd": -4,
+          "pts": 0
+        }
+      ]
+    },
+    {
+      "group": "Group D",
+      "table": [
+        {
+          "pos": 1,
+          "tla": "USA",
+          "name": "USA",
+          "p": 2,
+          "w": 2,
+          "d": 0,
+          "l": 0,
+          "gf": 6,
+          "ga": 1,
+          "gd": 5,
+          "pts": 6
+        },
+        {
+          "pos": 2,
+          "tla": "AUS",
+          "name": "Australia",
+          "p": 2,
+          "w": 1,
+          "d": 0,
+          "l": 1,
+          "gf": 2,
+          "ga": 2,
+          "gd": 0,
+          "pts": 3
+        },
+        {
+          "pos": 3,
+          "tla": "PAR",
+          "name": "Paraguay",
+          "p": 2,
+          "w": 1,
+          "d": 0,
+          "l": 1,
+          "gf": 2,
+          "ga": 4,
+          "gd": -2,
+          "pts": 3
+        },
+        {
+          "pos": 4,
+          "tla": "TUR",
+          "name": "Turkey",
+          "p": 2,
+          "w": 0,
+          "d": 0,
+          "l": 2,
+          "gf": 0,
+          "ga": 3,
+          "gd": -3,
+          "pts": 0
+        }
+      ]
+    },
+    {
+      "group": "Group E",
+      "table": [
+        {
+          "pos": 1,
+          "tla": "GER",
+          "name": "Germany",
+          "p": 2,
+          "w": 2,
+          "d": 0,
+          "l": 0,
+          "gf": 9,
+          "ga": 2,
+          "gd": 7,
+          "pts": 6
+        },
+        {
+          "pos": 2,
+          "tla": "CIV",
+          "name": "Ivory Coast",
+          "p": 2,
+          "w": 1,
+          "d": 0,
+          "l": 1,
+          "gf": 2,
+          "ga": 2,
+          "gd": 0,
+          "pts": 3
+        },
+        {
+          "pos": 3,
+          "tla": "ECU",
+          "name": "Ecuador",
+          "p": 2,
+          "w": 0,
+          "d": 1,
+          "l": 1,
+          "gf": 0,
+          "ga": 1,
+          "gd": -1,
+          "pts": 1
+        },
+        {
+          "pos": 4,
+          "tla": "CUW",
+          "name": "Curaçao",
+          "p": 2,
+          "w": 0,
+          "d": 1,
+          "l": 1,
+          "gf": 1,
+          "ga": 7,
+          "gd": -6,
+          "pts": 1
+        }
+      ]
+    },
+    {
+      "group": "Group F",
+      "table": [
+        {
+          "pos": 1,
+          "tla": "NED",
+          "name": "Netherlands",
+          "p": 2,
+          "w": 1,
+          "d": 1,
+          "l": 0,
+          "gf": 7,
+          "ga": 3,
+          "gd": 4,
+          "pts": 4
+        },
+        {
+          "pos": 2,
+          "tla": "JPN",
+          "name": "Japan",
+          "p": 2,
+          "w": 1,
+          "d": 1,
+          "l": 0,
+          "gf": 6,
+          "ga": 2,
+          "gd": 4,
+          "pts": 4
+        },
+        {
+          "pos": 3,
+          "tla": "SWE",
+          "name": "Sweden",
+          "p": 2,
+          "w": 1,
+          "d": 0,
+          "l": 1,
+          "gf": 6,
+          "ga": 6,
+          "gd": 0,
+          "pts": 3
+        },
+        {
+          "pos": 4,
+          "tla": "TUN",
+          "name": "Tunisia",
+          "p": 2,
+          "w": 0,
+          "d": 0,
+          "l": 2,
+          "gf": 1,
+          "ga": 9,
+          "gd": -8,
+          "pts": 0
+        }
+      ]
+    },
+    {
+      "group": "Group G",
+      "table": [
+        {
+          "pos": 1,
+          "tla": "IRN",
+          "name": "Iran",
+          "p": 2,
+          "w": 0,
+          "d": 2,
+          "l": 0,
+          "gf": 2,
+          "ga": 2,
+          "gd": 0,
+          "pts": 2
+        },
+        {
+          "pos": 2,
+          "tla": "BEL",
+          "name": "Belgium",
+          "p": 2,
+          "w": 0,
+          "d": 2,
+          "l": 0,
+          "gf": 1,
+          "ga": 1,
+          "gd": 0,
+          "pts": 2
+        },
+        {
+          "pos": 3,
+          "tla": "NZL",
+          "name": "New Zealand",
+          "p": 1,
+          "w": 0,
+          "d": 1,
+          "l": 0,
+          "gf": 2,
+          "ga": 2,
+          "gd": 0,
+          "pts": 1
+        },
+        {
+          "pos": 4,
+          "tla": "EGY",
+          "name": "Egypt",
+          "p": 1,
+          "w": 0,
+          "d": 1,
+          "l": 0,
+          "gf": 1,
+          "ga": 1,
+          "gd": 0,
+          "pts": 1
+        }
+      ]
+    },
+    {
+      "group": "Group H",
+      "table": [
+        {
+          "pos": 1,
+          "tla": "ESP",
+          "name": "Spain",
+          "p": 2,
+          "w": 1,
+          "d": 1,
+          "l": 0,
+          "gf": 4,
+          "ga": 0,
+          "gd": 4,
+          "pts": 4
+        },
+        {
+          "pos": 2,
+          "tla": "URU",
+          "name": "Uruguay",
+          "p": 1,
+          "w": 0,
+          "d": 1,
+          "l": 0,
+          "gf": 1,
+          "ga": 1,
+          "gd": 0,
+          "pts": 1
+        },
+        {
+          "pos": 3,
+          "tla": "KSA",
+          "name": "Saudi Arabia",
+          "p": 2,
+          "w": 0,
+          "d": 1,
+          "l": 1,
+          "gf": 1,
+          "ga": 5,
+          "gd": -4,
+          "pts": 1
+        },
+        {
+          "pos": 4,
+          "tla": "CPV",
+          "name": "Cape Verde",
+          "p": 1,
+          "w": 0,
+          "d": 1,
+          "l": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0,
+          "pts": 1
+        }
+      ]
+    },
+    {
+      "group": "Group I",
+      "table": [
+        {
+          "pos": 1,
+          "tla": "NOR",
+          "name": "Norway",
+          "p": 1,
+          "w": 1,
+          "d": 0,
+          "l": 0,
+          "gf": 4,
+          "ga": 1,
+          "gd": 3,
+          "pts": 3
+        },
+        {
+          "pos": 2,
+          "tla": "FRA",
+          "name": "France",
+          "p": 1,
+          "w": 1,
+          "d": 0,
+          "l": 0,
+          "gf": 3,
+          "ga": 1,
+          "gd": 2,
+          "pts": 3
+        },
+        {
+          "pos": 3,
+          "tla": "SEN",
+          "name": "Senegal",
+          "p": 1,
+          "w": 0,
+          "d": 0,
+          "l": 1,
+          "gf": 1,
+          "ga": 3,
+          "gd": -2,
+          "pts": 0
+        },
+        {
+          "pos": 4,
+          "tla": "IRQ",
+          "name": "Iraq",
+          "p": 1,
+          "w": 0,
+          "d": 0,
+          "l": 1,
+          "gf": 1,
+          "ga": 4,
+          "gd": -3,
+          "pts": 0
+        }
+      ]
+    },
+    {
+      "group": "Group J",
+      "table": [
+        {
+          "pos": 1,
+          "tla": "ARG",
+          "name": "Argentina",
+          "p": 1,
+          "w": 1,
+          "d": 0,
+          "l": 0,
+          "gf": 3,
+          "ga": 0,
+          "gd": 3,
+          "pts": 3
+        },
+        {
+          "pos": 2,
+          "tla": "AUT",
+          "name": "Austria",
+          "p": 1,
+          "w": 1,
+          "d": 0,
+          "l": 0,
+          "gf": 3,
+          "ga": 1,
+          "gd": 2,
+          "pts": 3
+        },
+        {
+          "pos": 3,
+          "tla": "JOR",
+          "name": "Jordan",
+          "p": 1,
+          "w": 0,
+          "d": 0,
+          "l": 1,
+          "gf": 1,
+          "ga": 3,
+          "gd": -2,
+          "pts": 0
+        },
+        {
+          "pos": 4,
+          "tla": "ALG",
+          "name": "Algeria",
+          "p": 1,
+          "w": 0,
+          "d": 0,
+          "l": 1,
+          "gf": 0,
+          "ga": 3,
+          "gd": -3,
+          "pts": 0
+        }
+      ]
+    },
+    {
+      "group": "Group K",
+      "table": [
+        {
+          "pos": 1,
+          "tla": "COL",
+          "name": "Colombia",
+          "p": 1,
+          "w": 1,
+          "d": 0,
+          "l": 0,
+          "gf": 3,
+          "ga": 1,
+          "gd": 2,
+          "pts": 3
+        },
+        {
+          "pos": 2,
+          "tla": "COD",
+          "name": "Congo DR",
+          "p": 1,
+          "w": 0,
+          "d": 1,
+          "l": 0,
+          "gf": 1,
+          "ga": 1,
+          "gd": 0,
+          "pts": 1
+        },
+        {
+          "pos": 2,
+          "tla": "POR",
+          "name": "Portugal",
+          "p": 1,
+          "w": 0,
+          "d": 1,
+          "l": 0,
+          "gf": 1,
+          "ga": 1,
+          "gd": 0,
+          "pts": 1
+        },
+        {
+          "pos": 4,
+          "tla": "UZB",
+          "name": "Uzbekistan",
+          "p": 1,
+          "w": 0,
+          "d": 0,
+          "l": 1,
+          "gf": 1,
+          "ga": 3,
+          "gd": -2,
+          "pts": 0
+        }
+      ]
+    },
+    {
+      "group": "Group L",
+      "table": [
+        {
+          "pos": 1,
+          "tla": "ENG",
+          "name": "England",
+          "p": 1,
+          "w": 1,
+          "d": 0,
+          "l": 0,
+          "gf": 4,
+          "ga": 2,
+          "gd": 2,
+          "pts": 3
+        },
+        {
+          "pos": 2,
+          "tla": "GHA",
+          "name": "Ghana",
+          "p": 1,
+          "w": 1,
+          "d": 0,
+          "l": 0,
+          "gf": 1,
+          "ga": 0,
+          "gd": 1,
+          "pts": 3
+        },
+        {
+          "pos": 3,
+          "tla": "PAN",
+          "name": "Panama",
+          "p": 1,
+          "w": 0,
+          "d": 0,
+          "l": 1,
+          "gf": 0,
+          "ga": 1,
+          "gd": -1,
+          "pts": 0
+        },
+        {
+          "pos": 4,
+          "tla": "CRO",
+          "name": "Croatia",
+          "p": 1,
+          "w": 0,
+          "d": 0,
+          "l": 1,
+          "gf": 2,
+          "ga": 4,
+          "gd": -2,
+          "pts": 0
+        }
+      ]
     }
   ]
 }
