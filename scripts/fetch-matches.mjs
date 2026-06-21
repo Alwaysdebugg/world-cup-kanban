@@ -29,6 +29,31 @@ async function fetchMatches() {
   return matches || [];
 }
 
+// ---- 拉小组积分榜 ----
+async function fetchStandings() {
+  const res = await fetch(`https://api.football-data.org/v4/competitions/${FD_COMP}/standings`, {
+    headers: { "X-Auth-Token": FD_KEY }
+  });
+  if (!res.ok) { console.warn("积分榜拉取失败,跳过:", res.status); return []; }
+  const { standings = [] } = await res.json();
+  const groups = [];
+  for (const s of standings) {
+    if (s.type !== "TOTAL" || !s.group) continue; // 只要小组赛总榜,淘汰赛(group 为 null)跳过
+    groups.push({
+      group: s.group.replace(/^GROUP_/, ""), // "GROUP_A" → "A"
+      table: (s.table || []).map(r => ({
+        pos: r.position,
+        tla: r.team?.tla || r.team?.shortName || r.team?.name,
+        name: r.team?.shortName || r.team?.name,
+        p: r.playedGames, w: r.won, d: r.draw, l: r.lost,
+        gf: r.goalsFor, ga: r.goalsAgainst, gd: r.goalDifference,
+        pts: r.points
+      }))
+    });
+  }
+  return groups;
+}
+
 // football-data 状态 → 看板状态
 function mapStatus(s) {
   if (s === "IN_PLAY" || s === "PAUSED") return "in_progress";
@@ -112,9 +137,10 @@ async function main() {
   const oddsThresholdMs = Math.max(0, ODDS_INTERVAL_MIN - 1) * 60 * 1000;
   const refreshOdds = !!ODDS_KEY && (now - prevOddsAt >= oddsThresholdMs);
 
-  // 比分每次都拉;odds 仅在到点时才拉,否则沿用上次结果
-  const [raw, freshProb] = await Promise.all([
+  // 比分、积分榜每次都拉;odds 仅在到点时才拉,否则沿用上次结果
+  const [raw, standings, freshProb] = await Promise.all([
     fetchMatches(),
+    fetchStandings(),
     refreshOdds ? fetchWinProbs() : Promise.resolve(null)
   ]);
   const oddsAt = refreshOdds ? new Date(now).toISOString() : (prev?.oddsAt || null);
@@ -155,10 +181,10 @@ async function main() {
     games.push(g);
   }
 
-  const payload = { snapshot: new Date().toISOString(), oddsAt, games };
+  const payload = { snapshot: new Date().toISOString(), oddsAt, games, standings };
   await mkdir("data", { recursive: true });
   await writeFile(OUT, JSON.stringify(payload, null, 2));
-  console.log(`已写入 ${OUT}:${games.length} 场比赛(odds ${refreshOdds ? "已刷新" : "复用上次"})`);
+  console.log(`已写入 ${OUT}:${games.length} 场比赛、${standings.length} 个小组积分榜(odds ${refreshOdds ? "已刷新" : "复用上次"})`);
 }
 
 main().catch(e => { console.error(e); process.exit(1); });
