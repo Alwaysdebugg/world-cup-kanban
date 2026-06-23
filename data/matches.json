@@ -1,6 +1,6 @@
 {
-  "snapshot": "2026-06-22T23:03:12.188Z",
-  "oddsAt": "2026-06-22T23:03:11.542Z",
+  "snapshot": "2026-06-23T00:17:07.791Z",
+  "oddsAt": "2026-06-23T00:17:07.084Z",
   "games": [
     {
       "status": "final",
@@ -160,7 +160,7 @@
       "status": "final",
       "start": "2026-06-15T22:00:00Z",
       "h": "KSA",
-      "a": "URY",
+      "a": "URU",
       "hn": "Saudi Arabia",
       "an": "Uruguay",
       "local": "6/15 周一 15:00",
@@ -423,7 +423,7 @@
     {
       "status": "final",
       "start": "2026-06-21T22:00:00Z",
-      "h": "URY",
+      "h": "URU",
       "a": "CPV",
       "hn": "Uruguay",
       "an": "Cape Verde",
@@ -461,22 +461,19 @@
       "hn": "France",
       "an": "Iraq",
       "local": "6/22 周一 14:00",
-      "hs": 1,
+      "hs": 2,
       "as": 0
     },
     {
-      "status": "scheduled",
+      "status": "in_progress",
       "start": "2026-06-23T00:00:00Z",
       "h": "NOR",
       "a": "SEN",
       "hn": "Norway",
       "an": "Senegal",
       "local": "6/22 周一 17:00",
-      "wp": {
-        "h": 41.9,
-        "d": 28,
-        "a": 30.2
-      }
+      "hs": 0,
+      "as": 0
     },
     {
       "status": "scheduled",
@@ -575,8 +572,8 @@
       "an": "Haiti",
       "local": "6/24 周三 15:00",
       "wp": {
-        "h": 81.8,
-        "d": 12.6,
+        "h": 82.3,
+        "d": 12.1,
         "a": 5.6
       }
     },
@@ -719,15 +716,15 @@
       "an": "Iraq",
       "local": "6/26 周五 12:00",
       "wp": {
-        "h": 72.8,
-        "d": 18.4,
-        "a": 8.8
+        "h": 72.7,
+        "d": 18.7,
+        "a": 8.6
       }
     },
     {
       "status": "scheduled",
       "start": "2026-06-27T00:00:00Z",
-      "h": "URY",
+      "h": "URU",
       "a": "ESP",
       "hn": "Uruguay",
       "an": "Spain",
@@ -1337,27 +1334,27 @@
           "pos": 2,
           "tla": "NOR",
           "name": "Norway",
-          "p": 1,
+          "p": 2,
           "w": 1,
-          "d": 0,
+          "d": 1,
           "l": 0,
           "gf": 4,
           "ga": 1,
           "gd": 3,
-          "pts": 3
+          "pts": 4
         },
         {
           "pos": 3,
           "tla": "SEN",
           "name": "Senegal",
-          "p": 1,
+          "p": 2,
           "w": 0,
-          "d": 0,
+          "d": 1,
           "l": 1,
           "gf": 1,
           "ga": 3,
           "gd": -2,
-          "pts": 0
+          "pts": 1
         },
         {
           "pos": 4,
