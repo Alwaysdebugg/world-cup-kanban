@@ -1,6 +1,6 @@
 {
-  "snapshot": "2026-06-25T20:25:20.785Z",
-  "oddsAt": "2026-06-25T20:25:20.312Z",
+  "snapshot": "2026-06-25T21:58:28.263Z",
+  "oddsAt": "2026-06-25T21:58:27.684Z",
   "games": [
     {
       "status": "final",
@@ -32,8 +32,8 @@
       "hn": "Canada",
       "an": "Bosnia-H.",
       "local": "6/12 周五 12:00",
-      "hs": 0,
-      "as": 0
+      "hs": 1,
+      "as": 1
     },
     {
       "status": "final",
@@ -160,7 +160,7 @@
       "status": "final",
       "start": "2026-06-15T22:00:00Z",
       "h": "KSA",
-      "a": "URY",
+      "a": "URU",
       "hn": "Saudi Arabia",
       "an": "Uruguay",
       "local": "6/15 周一 15:00",
@@ -423,7 +423,7 @@
     {
       "status": "final",
       "start": "2026-06-21T22:00:00Z",
-      "h": "URY",
+      "h": "URU",
       "a": "CPV",
       "hn": "Uruguay",
       "an": "Cape Verde",
@@ -597,6 +597,28 @@
       "as": 0
     },
     {
+      "status": "in_progress",
+      "start": "2026-06-25T20:00:00Z",
+      "h": "ECU",
+      "a": "GER",
+      "hn": "Ecuador",
+      "an": "Germany",
+      "local": "6/25 周四 13:00",
+      "hs": 2,
+      "as": 1
+    },
+    {
+      "status": "in_progress",
+      "start": "2026-06-25T20:00:00Z",
+      "h": "CUW",
+      "a": "CIV",
+      "hn": "Curaçao",
+      "an": "Ivory Coast",
+      "local": "6/25 周四 13:00",
+      "hs": 0,
+      "as": 2
+    },
+    {
       "status": "scheduled",
       "start": "2026-06-25T23:00:00Z",
       "h": "TUN",
@@ -619,9 +641,9 @@
       "an": "Sweden",
       "local": "6/25 周四 16:00",
       "wp": {
-        "h": 47.6,
-        "d": 28.8,
-        "a": 23.6
+        "h": 43.8,
+        "d": 28.3,
+        "a": 27.9
       }
     },
     {
@@ -683,15 +705,15 @@
     {
       "status": "scheduled",
       "start": "2026-06-27T00:00:00Z",
-      "h": "URY",
+      "h": "URU",
       "a": "ESP",
       "hn": "Uruguay",
       "an": "Spain",
       "local": "6/26 周五 17:00",
       "wp": {
-        "h": 13.2,
-        "d": 23.7,
-        "a": 63.2
+        "h": 12.6,
+        "d": 22,
+        "a": 65.3
       }
     },
     {
@@ -1056,8 +1078,8 @@
           "w": 2,
           "d": 1,
           "l": 0,
-          "gf": 9,
-          "ga": 2,
+          "gf": 10,
+          "ga": 3,
           "gd": 7,
           "pts": 7
         },
@@ -1066,13 +1088,13 @@
           "tla": "CIV",
           "name": "Ivory Coast",
           "p": 3,
-          "w": 1,
-          "d": 1,
+          "w": 2,
+          "d": 0,
           "l": 1,
-          "gf": 2,
+          "gf": 4,
           "ga": 2,
-          "gd": 0,
-          "pts": 4
+          "gd": 2,
+          "pts": 6
         },
         {
           "pos": 3,
@@ -1082,8 +1104,8 @@
           "w": 0,
           "d": 2,
           "l": 1,
-          "gf": 0,
-          "ga": 1,
+          "gf": 1,
+          "ga": 2,
           "gd": -1,
           "pts": 2
         },
@@ -1093,12 +1115,12 @@
           "name": "Curaçao",
           "p": 3,
           "w": 0,
-          "d": 2,
-          "l": 1,
+          "d": 1,
+          "l": 2,
           "gf": 1,
-          "ga": 7,
-          "gd": -6,
-          "pts": 2
+          "ga": 9,
+          "gd": -8,
+          "pts": 1
         }
       ]
     },
