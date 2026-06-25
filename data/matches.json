@@ -1,6 +1,6 @@
 {
-  "snapshot": "2026-06-25T01:28:24.226Z",
-  "oddsAt": "2026-06-25T01:28:23.767Z",
+  "snapshot": "2026-06-25T05:40:11.683Z",
+  "oddsAt": "2026-06-25T05:40:10.913Z",
   "games": [
     {
       "status": "final",
@@ -94,7 +94,7 @@
       "status": "final",
       "start": "2026-06-14T17:00:00Z",
       "h": "GER",
-      "a": "CUR",
+      "a": "CUW",
       "hn": "Germany",
       "an": "Curaçao",
       "local": "6/14 周日 10:00",
@@ -160,7 +160,7 @@
       "status": "final",
       "start": "2026-06-15T22:00:00Z",
       "h": "KSA",
-      "a": "URY",
+      "a": "URU",
       "hn": "Saudi Arabia",
       "an": "Uruguay",
       "local": "6/15 周一 15:00",
@@ -380,7 +380,7 @@
       "status": "final",
       "start": "2026-06-21T00:00:00Z",
       "h": "ECU",
-      "a": "CUR",
+      "a": "CUW",
       "hn": "Ecuador",
       "an": "Curaçao",
       "local": "6/20 周六 17:00",
@@ -423,7 +423,7 @@
     {
       "status": "final",
       "start": "2026-06-21T22:00:00Z",
-      "h": "URY",
+      "h": "URU",
       "a": "CPV",
       "hn": "Uruguay",
       "an": "Cape Verde",
@@ -575,7 +575,7 @@
       "as": 3
     },
     {
-      "status": "in_progress",
+      "status": "final",
       "start": "2026-06-25T01:00:00Z",
       "h": "CZE",
       "a": "MEX",
@@ -583,17 +583,17 @@
       "an": "Mexico",
       "local": "6/24 周三 18:00",
       "hs": 0,
-      "as": 0
+      "as": 3
     },
     {
-      "status": "in_progress",
+      "status": "final",
       "start": "2026-06-25T01:00:00Z",
       "h": "RSA",
       "a": "KOR",
       "hn": "South Africa",
       "an": "Korea Republic",
       "local": "6/24 周三 18:00",
-      "hs": 0,
+      "hs": 1,
       "as": 0
     },
     {
@@ -605,15 +605,15 @@
       "an": "Germany",
       "local": "6/25 周四 13:00",
       "wp": {
-        "h": 24.4,
-        "d": 21.6,
-        "a": 54
+        "h": 19,
+        "d": 18.2,
+        "a": 62.8
       }
     },
     {
       "status": "scheduled",
       "start": "2026-06-25T20:00:00Z",
-      "h": "CUR",
+      "h": "CUW",
       "a": "CIV",
       "hn": "Curaçao",
       "an": "Ivory Coast",
@@ -647,9 +647,9 @@
       "an": "Sweden",
       "local": "6/25 周四 16:00",
       "wp": {
-        "h": 50.9,
+        "h": 51.6,
         "d": 27.6,
-        "a": 21.5
+        "a": 20.8
       }
     },
     {
@@ -661,9 +661,9 @@
       "an": "USA",
       "local": "6/25 周四 19:00",
       "wp": {
-        "h": 28.4,
-        "d": 22.5,
-        "a": 49.1
+        "h": 26.5,
+        "d": 22.6,
+        "a": 50.9
       }
     },
     {
@@ -711,15 +711,15 @@
     {
       "status": "scheduled",
       "start": "2026-06-27T00:00:00Z",
-      "h": "URY",
+      "h": "URU",
       "a": "ESP",
       "hn": "Uruguay",
       "an": "Spain",
       "local": "6/26 周五 17:00",
       "wp": {
-        "h": 13.1,
-        "d": 22.5,
-        "a": 64.3
+        "h": 12.6,
+        "d": 22,
+        "a": 65.3
       }
     },
     {
@@ -801,9 +801,9 @@
       "an": "Portugal",
       "local": "6/27 周六 16:30",
       "wp": {
-        "h": 22.1,
+        "h": 23.2,
         "d": 26,
-        "a": 51.9
+        "a": 50.8
       }
     },
     {
@@ -853,52 +853,52 @@
           "tla": "MEX",
           "name": "Mexico",
           "p": 3,
-          "w": 2,
-          "d": 1,
+          "w": 3,
+          "d": 0,
           "l": 0,
-          "gf": 3,
+          "gf": 6,
           "ga": 0,
-          "gd": 3,
-          "pts": 7
+          "gd": 6,
+          "pts": 9
         },
         {
           "pos": 2,
-          "tla": "KOR",
-          "name": "Korea Republic",
+          "tla": "RSA",
+          "name": "South Africa",
           "p": 3,
           "w": 1,
           "d": 1,
           "l": 1,
           "gf": 2,
-          "ga": 2,
-          "gd": 0,
+          "ga": 3,
+          "gd": -1,
           "pts": 4
         },
         {
           "pos": 3,
+          "tla": "KOR",
+          "name": "Korea Republic",
+          "p": 3,
+          "w": 1,
+          "d": 0,
+          "l": 2,
+          "gf": 2,
+          "ga": 3,
+          "gd": -1,
+          "pts": 3
+        },
+        {
+          "pos": 4,
           "tla": "CZE",
           "name": "Czechia",
           "p": 3,
           "w": 0,
-          "d": 2,
-          "l": 1,
+          "d": 1,
+          "l": 2,
           "gf": 2,
-          "ga": 3,
-          "gd": -1,
-          "pts": 2
-        },
-        {
-          "pos": 4,
-          "tla": "RSA",
-          "name": "South Africa",
-          "p": 3,
-          "w": 0,
-          "d": 2,
-          "l": 1,
-          "gf": 1,
-          "ga": 3,
-          "gd": -2,
-          "pts": 2
+          "ga": 6,
+          "gd": -4,
+          "pts": 1
         }
       ]
     },
