@@ -1,6 +1,6 @@
 {
-  "snapshot": "2026-06-24T23:16:44.729Z",
-  "oddsAt": "2026-06-24T23:16:44.089Z",
+  "snapshot": "2026-06-25T01:28:24.226Z",
+  "oddsAt": "2026-06-25T01:28:23.767Z",
   "games": [
     {
       "status": "final",
@@ -94,7 +94,7 @@
       "status": "final",
       "start": "2026-06-14T17:00:00Z",
       "h": "GER",
-      "a": "CUW",
+      "a": "CUR",
       "hn": "Germany",
       "an": "Curaçao",
       "local": "6/14 周日 10:00",
@@ -160,7 +160,7 @@
       "status": "final",
       "start": "2026-06-15T22:00:00Z",
       "h": "KSA",
-      "a": "URU",
+      "a": "URY",
       "hn": "Saudi Arabia",
       "an": "Uruguay",
       "local": "6/15 周一 15:00",
@@ -380,7 +380,7 @@
       "status": "final",
       "start": "2026-06-21T00:00:00Z",
       "h": "ECU",
-      "a": "CUW",
+      "a": "CUR",
       "hn": "Ecuador",
       "an": "Curaçao",
       "local": "6/20 周六 17:00",
@@ -423,7 +423,7 @@
     {
       "status": "final",
       "start": "2026-06-21T22:00:00Z",
-      "h": "URU",
+      "h": "URY",
       "a": "CPV",
       "hn": "Uruguay",
       "an": "Cape Verde",
@@ -553,18 +553,18 @@
       "as": 1
     },
     {
-      "status": "in_progress",
+      "status": "final",
       "start": "2026-06-24T22:00:00Z",
       "h": "MAR",
       "a": "HAI",
       "hn": "Morocco",
       "an": "Haiti",
       "local": "6/24 周三 15:00",
-      "hs": 2,
+      "hs": 4,
       "as": 2
     },
     {
-      "status": "in_progress",
+      "status": "final",
       "start": "2026-06-24T22:00:00Z",
       "h": "SCO",
       "a": "BRA",
@@ -572,25 +572,29 @@
       "an": "Brazil",
       "local": "6/24 周三 15:00",
       "hs": 0,
-      "as": 2
+      "as": 3
     },
     {
-      "status": "scheduled",
+      "status": "in_progress",
       "start": "2026-06-25T01:00:00Z",
       "h": "CZE",
       "a": "MEX",
       "hn": "Czechia",
       "an": "Mexico",
-      "local": "6/24 周三 18:00"
+      "local": "6/24 周三 18:00",
+      "hs": 0,
+      "as": 0
     },
     {
-      "status": "scheduled",
+      "status": "in_progress",
       "start": "2026-06-25T01:00:00Z",
       "h": "RSA",
       "a": "KOR",
       "hn": "South Africa",
       "an": "Korea Republic",
-      "local": "6/24 周三 18:00"
+      "local": "6/24 周三 18:00",
+      "hs": 0,
+      "as": 0
     },
     {
       "status": "scheduled",
@@ -601,15 +605,15 @@
       "an": "Germany",
       "local": "6/25 周四 13:00",
       "wp": {
-        "h": 25.8,
-        "d": 22.1,
-        "a": 52.1
+        "h": 24.4,
+        "d": 21.6,
+        "a": 54
       }
     },
     {
       "status": "scheduled",
       "start": "2026-06-25T20:00:00Z",
-      "h": "CUW",
+      "h": "CUR",
       "a": "CIV",
       "hn": "Curaçao",
       "an": "Ivory Coast",
@@ -699,15 +703,15 @@
       "an": "Iraq",
       "local": "6/26 周五 12:00",
       "wp": {
-        "h": 78.1,
-        "d": 14.9,
+        "h": 78.5,
+        "d": 14.5,
         "a": 7
       }
     },
     {
       "status": "scheduled",
       "start": "2026-06-27T00:00:00Z",
-      "h": "URU",
+      "h": "URY",
       "a": "ESP",
       "hn": "Uruguay",
       "an": "Spain",
@@ -848,53 +852,53 @@
           "pos": 1,
           "tla": "MEX",
           "name": "Mexico",
-          "p": 2,
+          "p": 3,
           "w": 2,
-          "d": 0,
+          "d": 1,
           "l": 0,
           "gf": 3,
           "ga": 0,
           "gd": 3,
-          "pts": 6
+          "pts": 7
         },
         {
           "pos": 2,
           "tla": "KOR",
           "name": "Korea Republic",
-          "p": 2,
+          "p": 3,
           "w": 1,
-          "d": 0,
+          "d": 1,
           "l": 1,
           "gf": 2,
           "ga": 2,
           "gd": 0,
-          "pts": 3
+          "pts": 4
         },
         {
           "pos": 3,
           "tla": "CZE",
           "name": "Czechia",
-          "p": 2,
+          "p": 3,
           "w": 0,
-          "d": 1,
+          "d": 2,
           "l": 1,
           "gf": 2,
           "ga": 3,
           "gd": -1,
-          "pts": 1
+          "pts": 2
         },
         {
           "pos": 4,
           "tla": "RSA",
           "name": "South Africa",
-          "p": 2,
+          "p": 3,
           "w": 0,
-          "d": 1,
+          "d": 2,
           "l": 1,
           "gf": 1,
           "ga": 3,
           "gd": -2,
-          "pts": 1
+          "pts": 2
         }
       ]
     },
@@ -966,9 +970,9 @@
           "w": 2,
           "d": 1,
           "l": 0,
-          "gf": 6,
+          "gf": 7,
           "ga": 1,
-          "gd": 5,
+          "gd": 6,
           "pts": 7
         },
         {
@@ -976,13 +980,13 @@
           "tla": "MAR",
           "name": "Morocco",
           "p": 3,
-          "w": 1,
-          "d": 2,
+          "w": 2,
+          "d": 1,
           "l": 0,
-          "gf": 4,
+          "gf": 6,
           "ga": 3,
-          "gd": 1,
-          "pts": 5
+          "gd": 3,
+          "pts": 7
         },
         {
           "pos": 3,
@@ -993,8 +997,8 @@
           "d": 0,
           "l": 2,
           "gf": 1,
-          "ga": 3,
-          "gd": -2,
+          "ga": 4,
+          "gd": -3,
           "pts": 3
         },
         {
@@ -1003,12 +1007,12 @@
           "name": "Haiti",
           "p": 3,
           "w": 0,
-          "d": 1,
-          "l": 2,
+          "d": 0,
+          "l": 3,
           "gf": 2,
-          "ga": 6,
-          "gd": -4,
-          "pts": 1
+          "ga": 8,
+          "gd": -6,
+          "pts": 0
         }
       ]
     },
