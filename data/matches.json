@@ -1,6 +1,6 @@
 {
-  "snapshot": "2026-06-27T21:14:43.588Z",
-  "oddsAt": "2026-06-27T21:14:42.918Z",
+  "snapshot": "2026-06-27T22:16:54.460Z",
+  "oddsAt": "2026-06-27T22:16:53.339Z",
   "games": [
     {
       "status": "final",
@@ -663,26 +663,22 @@
       "as": 0
     },
     {
-      "status": "final",
+      "status": "scheduled",
       "start": "2026-06-26T19:00:00Z",
       "h": "NOR",
       "a": "FRA",
       "hn": "Norway",
       "an": "France",
-      "local": "6/26 周五 12:00",
-      "hs": 1,
-      "as": 4
+      "local": "6/26 周五 12:00"
     },
     {
-      "status": "final",
+      "status": "scheduled",
       "start": "2026-06-26T19:00:00Z",
       "h": "SEN",
       "a": "IRQ",
       "hn": "Senegal",
       "an": "Iraq",
-      "local": "6/26 周五 12:00",
-      "hs": 5,
-      "as": 0
+      "local": "6/26 周五 12:00"
     },
     {
       "status": "final",
@@ -726,7 +722,7 @@
       "an": "Iran",
       "local": "6/26 周五 20:00",
       "hs": 1,
-      "as": 1
+      "as": 2
     },
     {
       "status": "in_progress",
@@ -740,6 +736,17 @@
       "as": 0
     },
     {
+      "status": "in_progress",
+      "start": "2026-06-27T21:00:00Z",
+      "h": "CRO",
+      "a": "GHA",
+      "hn": "Croatia",
+      "an": "Ghana",
+      "local": "6/27 周六 14:00",
+      "hs": 1,
+      "as": 0
+    },
+    {
       "status": "scheduled",
       "start": "2026-06-27T23:30:00Z",
       "h": "COL",
@@ -748,9 +755,9 @@
       "an": "Portugal",
       "local": "6/27 周六 16:30",
       "wp": {
-        "h": 28.3,
-        "d": 25.3,
-        "a": 46.3
+        "h": 25.7,
+        "d": 24.7,
+        "a": 49.6
       }
     },
     {
@@ -771,9 +778,9 @@
       "an": "Argentina",
       "local": "6/27 周六 19:00",
       "wp": {
-        "h": 5.3,
-        "d": 10,
-        "a": 84.7
+        "h": 5.6,
+        "d": 10.5,
+        "a": 83.9
       }
     },
     {
@@ -1475,6 +1482,19 @@
       "table": [
         {
           "pos": 1,
+          "tla": "CRO",
+          "name": "Croatia",
+          "p": 3,
+          "w": 2,
+          "d": 0,
+          "l": 1,
+          "gf": 4,
+          "ga": 4,
+          "gd": 0,
+          "pts": 6
+        },
+        {
+          "pos": 2,
           "tla": "ENG",
           "name": "England",
           "p": 3,
@@ -1487,29 +1507,16 @@
           "pts": 5
         },
         {
-          "pos": 2,
+          "pos": 3,
           "tla": "GHA",
           "name": "Ghana",
           "p": 3,
           "w": 1,
-          "d": 2,
-          "l": 0,
-          "gf": 1,
-          "ga": 0,
-          "gd": 1,
-          "pts": 5
-        },
-        {
-          "pos": 3,
-          "tla": "CRO",
-          "name": "Croatia",
-          "p": 3,
-          "w": 1,
           "d": 1,
           "l": 1,
-          "gf": 3,
-          "ga": 4,
-          "gd": -1,
+          "gf": 1,
+          "ga": 1,
+          "gd": 0,
           "pts": 4
         },
         {
