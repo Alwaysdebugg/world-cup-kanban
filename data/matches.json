@@ -1,6 +1,6 @@
 {
-  "snapshot": "2026-06-27T18:55:25.552Z",
-  "oddsAt": "2026-06-27T18:55:25.009Z",
+  "snapshot": "2026-06-27T20:03:21.441Z",
+  "oddsAt": "2026-06-27T20:03:20.922Z",
   "games": [
     {
       "status": "final",
@@ -765,9 +765,9 @@
       "an": "Portugal",
       "local": "6/27 周六 16:30",
       "wp": {
-        "h": 27.6,
-        "d": 24.7,
-        "a": 47.6
+        "h": 28.4,
+        "d": 25.4,
+        "a": 46.2
       }
     },
     {
@@ -806,6 +806,57 @@
         "d": 47,
         "a": 25.4
       }
+    },
+    {
+      "status": "scheduled",
+      "start": "2026-06-28T19:00:00Z",
+      "h": "RSA",
+      "a": "CAN",
+      "hn": "South Africa",
+      "an": "Canada",
+      "local": "6/28 周日 12:00",
+      "wp": {
+        "h": 17.2,
+        "d": 26.4,
+        "a": 56.4
+      }
+    },
+    {
+      "status": "scheduled",
+      "start": "2026-06-29T17:00:00Z",
+      "h": "BRA",
+      "a": "JPN",
+      "hn": "Brazil",
+      "an": "Japan",
+      "local": "6/29 周一 10:00",
+      "wp": {
+        "h": 57.2,
+        "d": 25.1,
+        "a": 17.8
+      }
+    },
+    {
+      "status": "scheduled",
+      "start": "2026-06-30T01:00:00Z",
+      "h": "NED",
+      "a": "MAR",
+      "hn": "Netherlands",
+      "an": "Morocco",
+      "local": "6/29 周一 18:00",
+      "wp": {
+        "h": 44.9,
+        "d": 30.6,
+        "a": 24.5
+      }
+    },
+    {
+      "status": "scheduled",
+      "start": "2026-07-02T00:00:00Z",
+      "h": "USA",
+      "a": "BIH",
+      "hn": "USA",
+      "an": "Bosnia-H.",
+      "local": "7/1 周三 17:00"
     }
   ],
   "standings": [
