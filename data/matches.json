@@ -1,6 +1,6 @@
 {
-  "snapshot": "2026-06-28T04:54:18.097Z",
-  "oddsAt": "2026-06-28T04:54:17.021Z",
+  "snapshot": "2026-06-28T08:15:12.591Z",
+  "oddsAt": "2026-06-28T08:15:11.476Z",
   "games": [
     {
       "status": "final",
@@ -803,9 +803,9 @@
       "an": "Canada",
       "local": "6/28 周日 12:00",
       "wp": {
-        "h": 16.8,
-        "d": 27.2,
-        "a": 56.1
+        "h": 16.1,
+        "d": 26.4,
+        "a": 57.5
       }
     },
     {
@@ -817,9 +817,23 @@
       "an": "Japan",
       "local": "6/29 周一 10:00",
       "wp": {
-        "h": 56.5,
+        "h": 56.8,
         "d": 25.1,
-        "a": 18.4
+        "a": 18.1
+      }
+    },
+    {
+      "status": "scheduled",
+      "start": "2026-06-29T20:30:00Z",
+      "h": "GER",
+      "a": "PAR",
+      "hn": "Germany",
+      "an": "Paraguay",
+      "local": "6/29 周一 13:30",
+      "wp": {
+        "h": 71.6,
+        "d": 18.3,
+        "a": 10
       }
     },
     {
@@ -831,9 +845,74 @@
       "an": "Morocco",
       "local": "6/29 周一 18:00",
       "wp": {
-        "h": 45.9,
-        "d": 31.1,
-        "a": 23
+        "h": 44.9,
+        "d": 30.6,
+        "a": 24.5
+      }
+    },
+    {
+      "status": "scheduled",
+      "start": "2026-06-30T17:00:00Z",
+      "h": "CIV",
+      "a": "NOR",
+      "hn": "Ivory Coast",
+      "an": "Norway",
+      "local": "6/30 周二 10:00",
+      "wp": {
+        "h": 24.7,
+        "d": 27.6,
+        "a": 47.6
+      }
+    },
+    {
+      "status": "scheduled",
+      "start": "2026-06-30T21:00:00Z",
+      "h": "FRA",
+      "a": "SWE",
+      "hn": "France",
+      "an": "Sweden",
+      "local": "6/30 周二 14:00",
+      "wp": {
+        "h": 75.8,
+        "d": 16.2,
+        "a": 8.1
+      }
+    },
+    {
+      "status": "scheduled",
+      "start": "2026-07-01T01:00:00Z",
+      "h": "MEX",
+      "a": "ECU",
+      "hn": "Mexico",
+      "an": "Ecuador",
+      "local": "6/30 周二 18:00",
+      "wp": {
+        "h": 43.3,
+        "d": 33,
+        "a": 23.7
+      }
+    },
+    {
+      "status": "scheduled",
+      "start": "2026-07-01T16:00:00Z",
+      "h": "ENG",
+      "a": "COD",
+      "hn": "England",
+      "an": "Congo DR",
+      "local": "7/1 周三 09:00"
+    },
+    {
+      "status": "scheduled",
+      "start": "2026-07-01T20:00:00Z",
+      "h": "BEL",
+      "a": "SEN",
+      "hn": "Belgium",
+      "an": "Senegal",
+      "local": "7/1 周三 13:00",
+      "wp": {
+        "h": 45.4,
+        "d": 28.9,
+        "a": 25.8
       }
     },
     {
@@ -844,6 +923,90 @@
       "hn": "USA",
       "an": "Bosnia-H.",
       "local": "7/1 周三 17:00"
+    },
+    {
+      "status": "scheduled",
+      "start": "2026-07-02T19:00:00Z",
+      "h": "ESP",
+      "a": "AUT",
+      "hn": "Spain",
+      "an": "Austria",
+      "local": "7/2 周四 12:00",
+      "wp": {
+        "h": 74.7,
+        "d": 17.8,
+        "a": 7.5
+      }
+    },
+    {
+      "status": "scheduled",
+      "start": "2026-07-02T23:00:00Z",
+      "h": "POR",
+      "a": "CRO",
+      "hn": "Portugal",
+      "an": "Croatia",
+      "local": "7/2 周四 16:00",
+      "wp": {
+        "h": 51.2,
+        "d": 26.9,
+        "a": 21.9
+      }
+    },
+    {
+      "status": "scheduled",
+      "start": "2026-07-03T03:00:00Z",
+      "h": "SUI",
+      "a": "ALG",
+      "hn": "Switzerland",
+      "an": "Algeria",
+      "local": "7/2 周四 20:00",
+      "wp": {
+        "h": 51.2,
+        "d": 26.3,
+        "a": 22.5
+      }
+    },
+    {
+      "status": "scheduled",
+      "start": "2026-07-03T18:00:00Z",
+      "h": "AUS",
+      "a": "EGY",
+      "hn": "Australia",
+      "an": "Egypt",
+      "local": "7/3 周五 11:00",
+      "wp": {
+        "h": 28.7,
+        "d": 33.7,
+        "a": 37.7
+      }
+    },
+    {
+      "status": "scheduled",
+      "start": "2026-07-03T22:00:00Z",
+      "h": "ARG",
+      "a": "CPV",
+      "hn": "Argentina",
+      "an": "Cape Verde",
+      "local": "7/3 周五 15:00",
+      "wp": {
+        "h": 83.9,
+        "d": 11.5,
+        "a": 4.6
+      }
+    },
+    {
+      "status": "scheduled",
+      "start": "2026-07-04T01:30:00Z",
+      "h": "COL",
+      "a": "GHA",
+      "hn": "Colombia",
+      "an": "Ghana",
+      "local": "7/3 周五 18:30",
+      "wp": {
+        "h": 59.4,
+        "d": 25.7,
+        "a": 14.9
+      }
     }
   ],
   "standings": [
