@@ -1,6 +1,6 @@
 {
-  "snapshot": "2026-06-27T23:18:20.125Z",
-  "oddsAt": "2026-06-27T23:18:18.977Z",
+  "snapshot": "2026-06-28T00:17:14.223Z",
+  "oddsAt": "2026-06-28T00:17:13.593Z",
   "games": [
     {
       "status": "final",
@@ -752,29 +752,6 @@
     },
     {
       "status": "scheduled",
-      "start": "2026-06-27T23:30:00Z",
-      "h": "COL",
-      "a": "POR",
-      "hn": "Colombia",
-      "an": "Portugal",
-      "local": "6/27 周六 16:30",
-      "wp": {
-        "h": 24.3,
-        "d": 24.3,
-        "a": 51.3
-      }
-    },
-    {
-      "status": "scheduled",
-      "start": "2026-06-27T23:30:00Z",
-      "h": "COD",
-      "a": "UZB",
-      "hn": "Congo DR",
-      "an": "Uzbekistan",
-      "local": "6/27 周六 16:30"
-    },
-    {
-      "status": "scheduled",
       "start": "2026-06-28T02:00:00Z",
       "h": "JOR",
       "a": "ARG",
@@ -1431,53 +1408,53 @@
           "pos": 1,
           "tla": "COL",
           "name": "Colombia",
-          "p": 2,
+          "p": 3,
           "w": 2,
-          "d": 0,
+          "d": 1,
           "l": 0,
           "gf": 4,
           "ga": 1,
           "gd": 3,
-          "pts": 6
+          "pts": 7
         },
         {
           "pos": 2,
           "tla": "POR",
           "name": "Portugal",
-          "p": 2,
+          "p": 3,
           "w": 1,
-          "d": 1,
+          "d": 2,
           "l": 0,
           "gf": 6,
           "ga": 1,
           "gd": 5,
-          "pts": 4
+          "pts": 5
         },
         {
           "pos": 3,
-          "tla": "COD",
-          "name": "Congo DR",
-          "p": 2,
-          "w": 0,
-          "d": 1,
-          "l": 1,
-          "gf": 1,
-          "ga": 2,
-          "gd": -1,
-          "pts": 1
+          "tla": "UZB",
+          "name": "Uzbekistan",
+          "p": 3,
+          "w": 1,
+          "d": 0,
+          "l": 2,
+          "gf": 2,
+          "ga": 8,
+          "gd": -6,
+          "pts": 3
         },
         {
           "pos": 4,
-          "tla": "UZB",
-          "name": "Uzbekistan",
-          "p": 2,
+          "tla": "COD",
+          "name": "Congo DR",
+          "p": 3,
           "w": 0,
-          "d": 0,
+          "d": 1,
           "l": 2,
           "gf": 1,
-          "ga": 8,
-          "gd": -7,
-          "pts": 0
+          "ga": 3,
+          "gd": -2,
+          "pts": 1
         }
       ]
     },
